@@ -15,7 +15,7 @@ return require('packer').startup(
   
     -- LSP and Autocomplete
     use 'neovim/nvim-lspconfig'
-    use { 'glepnir/lspsaga.nvim' } -- requires nvim-lspconfig, but it's always installed regardless
+    use 'glepnir/lspsaga.nvim' -- requires nvim-lspconfig, but it's always installed regardless
     use 'hrsh7th/nvim-compe'
 
     -- Syntax & Lang
