@@ -5,7 +5,6 @@ My Neovim driver.  Things are mostly setup for JavaScript development, as that's
 the daily, but this config is always a *WIP* :smile:.  I'll be adding things to faciliate working
 with Rust, Lua .. etc!
 
----
 
 ### Configuration Directory Structure
 
@@ -29,5 +28,5 @@ nvim
 ```
 
 I don't use many plugins at the moment, so I'm not sure it's warranted to split the config out
-anymore than it is.  Plugin specific configuration sits in a single file: `/lua/plugins/config.lua`.
+anymore than it is.  Currently, plugin specific configuration sits in a single file: `/lua/plugins/config.lua`.
 
