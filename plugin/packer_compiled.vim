@@ -199,10 +199,10 @@ time("Config for indent-blankline.nvim", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file ComposerOpen lua require("packer.load")({'vim-markdown-composer'}, { cmd = "ComposerOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file PrettierAsync lua require("packer.load")({'vim-prettier'}, { cmd = "PrettierAsync", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Prettier lua require("packer.load")({'vim-prettier'}, { cmd = "Prettier", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file ComposerStart lua require("packer.load")({'vim-markdown-composer'}, { cmd = "ComposerStart", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Prettier lua require("packer.load")({'vim-prettier'}, { cmd = "Prettier", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file PrettierAsync lua require("packer.load")({'vim-prettier'}, { cmd = "PrettierAsync", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file ComposerOpen lua require("packer.load")({'vim-markdown-composer'}, { cmd = "ComposerOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 
 vim.cmd [[augroup packer_load_aucmds]]
