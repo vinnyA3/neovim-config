@@ -1,6 +1,8 @@
 local nvim_lsp = require('lspconfig')
 local fn = vim.fn
 
+nvim_lsp.clangd.setup{}
+
 nvim_lsp.tsserver.setup{
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
