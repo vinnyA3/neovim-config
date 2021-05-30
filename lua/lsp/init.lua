@@ -1,6 +1,8 @@
 local nvim_lsp = require('lspconfig')
 local fn = vim.fn
 
+-- note: this requires CMAKE and a compile_commands.json file:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#clangd 
 nvim_lsp.clangd.setup{}
 
 nvim_lsp.tsserver.setup{
