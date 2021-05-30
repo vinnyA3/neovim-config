@@ -48,8 +48,8 @@ return require('packer').startup(
     use { 'prettier/vim-prettier', opt = true, cmd = { 'Prettier', 'PrettierAsync' }}
 
     -- Cosmetics
-    use { 'bluz71/vim-moonfly-colors' }
-    use { 'folke/tokyonight.nvim' }
+    use 'bluz71/vim-moonfly-colors'
+    use 'folke/tokyonight.nvim'
     use {
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
