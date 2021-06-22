@@ -20,6 +20,7 @@ o.completeopt= 'menuone,noinsert,noselect'
 o.showbreak = "↳  "
 o.expandtab = true
 o.indentexpr = 'off'
+o.smartindent = true
 o.tabstop = 2
 o.softtabstop = 2
 o.shiftwidth = 2
