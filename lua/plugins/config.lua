@@ -1,13 +1,14 @@
 -- Plugin Configurations
 -- =====================
--- You'll find all initial configs & setups here, as well as custom plugin keybindings
+-- You'll find all initial configs & setups here,
+-- as well as custom plugin keybindings!
+
 local map = vim.api.nvim_set_keymap
 local keyOpts = { silent = true, noremap = true }
 
 -- Config: nvim-treesitter
 require('nvim-treesitter.configs').setup {
-  -- TODO: comment back in when parser migrations happens upstream || when I dig
-  -- deeper and conclude things are safe
+ -- TODO: check upstream if this works
   -- ensure_installed = {"typescript", "javascript", "kotlin"},
   incremental_selection = {
       enable = true,
@@ -51,9 +52,9 @@ vim.cmd[[colorscheme tokyonight]]
 require('lualine').setup {
   options = {
     theme = 'tokyonight';
-    icons_enabled = false;
+    icons_enabled = true;
     section_separators = {'', ''};
-    component_separators = {'⟡', '⟡'};
+    component_separators = {'|', '|'};
   }
 }
 
@@ -113,7 +114,7 @@ local clipboard_actions = require'lir.clipboard.actions'
 
 require'lir'.setup {
   show_hidden_files = true,
-  devicons_enable = false,
+  devicons_enable = true,
   mappings = {
     ['l']     = actions.edit,
     ['<CR>']  = actions.edit,
@@ -151,6 +152,9 @@ require'lir'.setup {
 
 map('n', '<Leader>f', ":lua require'lir.float'.toggle()<CR>", keyOpts)
 map('n', '-', [[<CMD>execute 'e ' .. expand('%:p:h')<CR>]], keyOpts) -- netrw/dirvish file exp functionality
+
+-- Config: lir-git-status
+require'lir.git_status'.setup({ show_ignored = false })
 
 -- Config: vim-markdown-composer 
 vim.g.markdown_composer_autostart = 0
