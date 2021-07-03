@@ -142,10 +142,18 @@ require'lir'.setup {
     ['P'] = clipboard_actions.paste,
   },
   float = {
-    size_percentage = 0.5,
     winblend = 10,
-    border = true,
-    borderchars = {"╔" , "═" , "╗" , "║" , "╝" , "═" , "╚", "║"},
+    win_opts = function()
+       return {
+         border = require("lir.float.helper").make_border_opts({
+           "+", "─", "+", "│", "+", "─", "+", "│",
+         }, "Normal"),
+         width = width,
+         height = height,
+         row = 1,
+         col = math.floor((vim.o.columns - width) / 2),
+      }
+    end
   },
   hide_cursor = true,
 }
