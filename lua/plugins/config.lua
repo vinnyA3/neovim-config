@@ -142,16 +142,19 @@ require'lir'.setup {
     ['P'] = clipboard_actions.paste,
   },
   float = {
-    winblend = 10,
+    winblend = 0,
     win_opts = function()
-       return {
-         border = require("lir.float.helper").make_border_opts({
-           "+", "─", "+", "│", "+", "─", "+", "│",
-         }, "Normal"),
-         width = width,
-         height = height,
-         row = 1,
-         col = math.floor((vim.o.columns - width) / 2),
+      local width = math.floor(vim.o.columns * 0.8)
+      local height = math.floor(vim.o.lines * 0.8)
+
+      return {
+        border = require("lir.float.helper").make_border_opts({
+          "+", "─", "+", "│", "+", "─", "+", "│",
+        }, "Normal"),
+        width = width,
+        height = height,
+        row = 1,
+        col = math.floor((vim.o.columns - width) / 2),
       }
     end
   },
