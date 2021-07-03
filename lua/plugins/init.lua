@@ -63,7 +63,6 @@ return require('packer').startup(
     use 'folke/tokyonight.nvim'
     use {
       'lukas-reineke/indent-blankline.nvim',
-      branch = 'lua',
       config = function() require('indent_blankline') end
     }
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
