@@ -53,13 +53,13 @@ return require('packer').startup(
       ft = 'markdown'
     } -- warning: vim-markdown-composer needs cargo installed.  Rust ftw :)
     use 'glepnir/dashboard-nvim'
-    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+    use { 'glacambre/firenvim', opt = true, run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Formatters ==========
     use { 'prettier/vim-prettier', opt = true, cmd = { 'Prettier', 'PrettierAsync' }}
 
     -- ========== Cosmetics ===========
-    use 'bluz71/vim-moonfly-colors'
+    use { 'bluz71/vim-moonfly-colors', opt = true }
     use 'folke/tokyonight.nvim'
     use {
       'lukas-reineke/indent-blankline.nvim',
