@@ -1,7 +1,7 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
--- Initial Packer Install (clean env)
+-- Initial Packer Install (clean env) 
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
