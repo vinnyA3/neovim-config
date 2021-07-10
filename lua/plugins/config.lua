@@ -101,11 +101,11 @@ vim.g.indent_blankline_filetype = {
 }
 
 -- Config: gitsigns 
-require('gitsigns').setup {
-  signs = {
-    add = { text = '++', numhl='GitSignsAddNr' },
-  }
-}
+-- require('gitsigns').setup {
+--   signs = {
+--     add = { text = '++', numhl='GitSignsAddNr' },
+--   }
+-- }
 
 -- Config: lir 
 local actions = require'lir.actions'
