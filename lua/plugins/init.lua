@@ -44,7 +44,7 @@ return require('packer').startup(
     -- ========== Utilites and Editing Convenience ==========
     use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
     use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
-    use 'tpope/vim-fugitive'
+    use { 'tpope/vim-fugitive', opt = true, cmd = { 'G', 'Git' } }
     use {
       'euclio/vim-markdown-composer',
       opt = true,
@@ -53,7 +53,7 @@ return require('packer').startup(
       ft = 'markdown'
     } -- warning: vim-markdown-composer needs cargo installed.  Rust ftw :)
     use 'glepnir/dashboard-nvim'
-    use { 'glacambre/firenvim', opt = true, run = function() vim.fn['firenvim#install'](0) end }
+    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Formatters ==========
     use { 'prettier/vim-prettier', opt = true, cmd = { 'Prettier', 'PrettierAsync' }}
