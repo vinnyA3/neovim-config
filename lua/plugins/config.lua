@@ -71,6 +71,27 @@ map('n', 'gd', ':Lspsaga preview_definition<cr>', keyOpts)
 map('n', 'gl', ':Lspsaga show_line_diagnostics<cr>', keyOpts)
 map('n', 'ca', ':Lspsaga code_action<cr>', keyOpts)
 
+-- Config: formatter
+local commonJSConfig = {
+  function()
+    return {
+      exe = 'prettier',
+      args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0), '--single-quote' },
+      stdin = true
+    }
+  end
+}
+
+require('formatter').setup({
+  logging = true,
+  filetype = {
+    javascript = commonJSConfig,
+    typescript = commonJSConfig,
+    javascriptreact = commonJSConfig,
+    typescriptreact = commonJSConfig,
+  }
+})
+
 -- Config: colorizer
 require('colorizer').setup {
   'javascript';

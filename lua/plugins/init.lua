@@ -56,7 +56,7 @@ return require('packer').startup(
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Formatters ==========
-    use { 'prettier/vim-prettier', opt = true, cmd = { 'Prettier', 'PrettierAsync' }}
+    use 'mhartington/formatter.nvim'
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
