@@ -67,6 +67,6 @@ return require('packer').startup(
     }
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use { 'hoob3rt/lualine.nvim' }
-    use 'norcalli/nvim-colorizer.lua'
+    use { 'norcalli/nvim-colorizer.lua', opt = true, ft = { 'javascript', 'typescript', 'css', 'scss' } }
   end
 )
