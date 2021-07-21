@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Easy Buffer Navigation and manipulation
 map('n', '<leader>d', ':bd<cr>', opts)
-map('n', '<leader>x', ':%bd|e#<cr>', opts) -- close all buffers(%), open last for editing(e#)
+map('n', '<leader>o', ':%bd|e#<cr>', opts) -- close all buffers(%), open last for editing(e#) : mnemonic 'o' -> only
 
 -- Easy Window Navigation
 map('n', '<C-h>', '<C-w>h', opts)
