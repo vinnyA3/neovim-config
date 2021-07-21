@@ -42,6 +42,11 @@ return require('packer').startup(
     use 'jiangmiao/auto-pairs' -- TODO: find lua alternative
 
     -- ========== Utilites and Editing Convenience ==========
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function() require("trouble").setup{} end
+    }
     use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
     use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
     use { 'tpope/vim-fugitive', opt = true, cmd = { 'G', 'Git', 'Gcommit', 'Gblame' } }
