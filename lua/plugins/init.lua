@@ -44,7 +44,7 @@ return require('packer').startup(
     -- ========== Utilites and Editing Convenience ==========
     use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
     use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
-    use { 'tpope/vim-fugitive', opt = true, cmd = { 'G', 'Git' } }
+    use { 'tpope/vim-fugitive', opt = true, cmd = { 'G', 'Git', 'Gcommit', 'Gblame' } }
     use {
       'euclio/vim-markdown-composer',
       opt = true,
