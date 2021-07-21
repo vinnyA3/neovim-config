@@ -47,6 +47,11 @@ return require('packer').startup(
       requires = "kyazdani42/nvim-web-devicons",
       config = function() require("trouble").setup{} end
     }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function() require("todo-comments").setup{} end
+    }
     use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
     use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
     use { 'tpope/vim-fugitive', opt = true, cmd = { 'G', 'Git', 'Gcommit', 'Gblame' } }
