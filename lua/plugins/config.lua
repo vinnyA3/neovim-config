@@ -49,7 +49,6 @@ vim.g.tokyonight_italic_functions = false
 vim.cmd[[colorscheme tokyonight]]
 
 -- Config trouble.nvim 
-require("trouble").setup {} -- use default config
 map("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
 map("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
 map("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", { silent = true, noremap = true })
