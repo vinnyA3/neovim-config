@@ -248,3 +248,9 @@ map('n', '<Leader>r', ':Rg<cr>', keyOpts)
 -- Config: netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1 -- don't load default netrw
+
+-- TODO: might need new scope, custom autocmd group seems out of place here
+vim.api.nvim_exec(
+  [[ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete ]],
+  false
+)
