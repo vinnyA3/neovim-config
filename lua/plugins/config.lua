@@ -44,9 +44,15 @@ require('compe').setup {
 -- vim.g.moonflyTransparent = 1
 
 -- Config tokyonight
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = false
-vim.cmd[[colorscheme tokyonight]]
+-- vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_transparent = true
+-- vim.g.tokyonight_italic_functions = false
+-- vim.cmd[[colorscheme tokyonight]]
+
+-- Config nightfox
+vim.g.nightfox_style="nightfox"
+vim.g.nightfox_italic_comments = 1
+require('nightfox').set()
 
 -- Config trouble.nvim 
 map("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
@@ -59,7 +65,7 @@ map("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = tru
 -- Config: lualine.nvim
 require('lualine').setup {
   options = {
-    theme = 'tokyonight';
+    theme = 'nightfox';
     icons_enabled = true;
     section_separators = {'', ''};
     component_separators = {'|', '|'};

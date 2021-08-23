@@ -80,7 +80,7 @@ return require('packer').startup(
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
-    use 'folke/tokyonight.nvim'
+    use 'EdenEast/nightfox.nvim'
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = function() require('indent_blankline') end
