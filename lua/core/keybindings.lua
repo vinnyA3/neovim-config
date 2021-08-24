@@ -38,7 +38,7 @@ map('n', '<Right>', ':vertical resize +5<CR>', opts)
 map('n', '<leader>z', ':tab split<CR>', opts)
 
 -- split terminal (horiz)
-map('n', '<leader>t', ':sp | term<CR>', opts)
+map('n', '<leader>T', ':sp | term<CR>', opts)
 
 -- find and replace all occurences of focused word, in current buffer
 map('n', '<Leader>s', ':%s/\\<<C-r><C-w>\\>/', opts)
