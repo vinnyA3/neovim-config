@@ -202,7 +202,7 @@ require'lir'.setup {
   hide_cursor = true,
 }
 
-map('n', '<Leader>f', ":lua require'lir.float'.toggle()<CR>", keyOpts)
+map('n', '<Leader>F', ":lua require'lir.float'.toggle()<CR>", keyOpts)
 map('n', '-', [[<CMD>execute 'e ' .. expand('%:p:h')<CR>]], keyOpts) -- netrw/dirvish file exp functionality
 
 -- Config: lir-git-status
