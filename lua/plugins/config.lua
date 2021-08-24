@@ -257,9 +257,11 @@ map('n', '<Leader>b', ':Buffers<cr>', keyOpts)
 map('n', '<Leader>h', ':History<cr>', keyOpts)
 map('n', '<Leader>r', ':Rg<cr>', keyOpts)
 
--- Config: netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1 -- don't load default netrw
+
+-- Config: rhubarb.vim
+vim.cmd([[ command! -nargs=1 Browse silent exec '!open "<args>"' ]])
 
 -- TODO: might need new scope, custom autocmd group seems out of place here
 vim.api.nvim_exec(
