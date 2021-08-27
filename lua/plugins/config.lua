@@ -50,9 +50,21 @@ require('compe').setup {
 -- vim.cmd[[colorscheme tokyonight]]
 
 -- Config nightfox
-vim.g.nightfox_style="nightfox"
-vim.g.nightfox_italic_comments = 1
-require('nightfox').set()
+-- From lua
+local nightfox = require('nightfox')
+nightfox.load()
+nightfox.setup({
+  fox = "nightfox", -- Which fox style should be applied
+  transparent = false, -- Disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening :terminal
+  styles = {
+    comments = "NONE", -- Style that is applied to comments: see `highlight-args` for options
+    functions = "NONE", -- Style that is applied to functions: see `highlight-args` for options
+    keywords = "NONE", -- Style that is applied to keywords: see `highlight-args` for options
+    strings = "NONE", -- Style that is applied to strings: see `highlight-args` for options
+    variables = "NONE", -- Style that is applied to variables: see `highlight-args` for options
+  },
+})
 
 -- Config trouble.nvim 
 map("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
