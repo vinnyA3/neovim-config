@@ -25,24 +25,13 @@ require('nvim-treesitter.configs').setup {
   textobjects = { enable = true },
 }
 
--- Config: compe
-require('compe').setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  allow_prefix_unmatch = false;
-  source = {
-    path = true;
-    buffer = true;
-    vsnip = false;
-    nvim_lsp = true;
-    nvim_lua = false;
-  };
+-- Config: cmp
+require('cmp').setup {
+  sources = {
+    { name = 'buffer' },
+    { name = 'nvim_lsp' },
+    { name = 'path' }
+  }
 }
 
 -- Config: moonfly
@@ -274,8 +263,9 @@ map('n', '<Leader>b', ':Buffers<cr>', keyOpts)
 map('n', '<Leader>h', ':History<cr>', keyOpts)
 map('n', '<Leader>r', ':Rg<cr>', keyOpts)
 
+-- Config: netrw (disable)
 vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1 -- don't load default netrw
+vim.g.loaded_netrwPlugin = 1
 
 -- Config: rhubarb.vim
 vim.cmd([[ command! -nargs=1 Browse silent exec '!open "<args>"' ]])
