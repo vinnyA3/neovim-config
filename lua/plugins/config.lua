@@ -6,6 +6,11 @@
 local map = vim.api.nvim_set_keymap
 local keyOpts = { silent = true, noremap = true }
 
+require('impatient')
+
+-- Config: indent-blankline
+require('indent_blankline')
+
 -- Config: nvim-treesitter
 require('nvim-treesitter.configs').setup {
  -- TODO: check upstream if this works

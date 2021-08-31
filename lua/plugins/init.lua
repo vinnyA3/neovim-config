@@ -1,8 +1,11 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
+-- MACOS - lusrocks installs using incorrect luaversion, unless specified
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+
 -- Initial Packer Install (clean env) 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -13,7 +16,9 @@ return require('packer').startup(
   function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-  
+    -- =========== Performance ===========
+    use { 'lewis6991/impatient.nvim', rocks = "mpack" }
+
     -- =========== LSP and Autocomplete ===========
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim' -- requires nvim-lspconfig to be installed
@@ -82,12 +87,9 @@ return require('packer').startup(
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
     use 'EdenEast/nightfox.nvim'
-    use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = function() require('indent_blankline') end
-    }
+    use 'lukas-reineke/indent-blankline.nvim'
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
-    use { 'hoob3rt/lualine.nvim' }
+    use 'hoob3rt/lualine.nvim'
     use 'norcalli/nvim-colorizer.lua'
   end
 )
