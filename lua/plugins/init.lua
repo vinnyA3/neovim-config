@@ -29,6 +29,7 @@ return require('packer').startup(
     use { 'keith/swift.vim', opt = true, ft = 'swift' }
 
     -- ========== Editing ===========
+    -- use {keys = string | list}
     use {
       'tamago324/lir.nvim',
       requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
@@ -44,7 +45,7 @@ return require('packer').startup(
     use 'tpope/vim-repeat'
     use { 'tpope/vim-rhubarb', opt = true, cmd = 'GBrowse' }
     use 'tpope/vim-unimpaired'
-    use 'mattn/emmet-vim'
+    use { 'mattn/emmet-vim', ft = { 'html', 'javascriptreact', 'typescriptreact' } }
     use 'jiangmiao/auto-pairs' -- TODO: find lua alternative
 
     -- ========== Utilites and Editing Convenience ==========
@@ -59,8 +60,11 @@ return require('packer').startup(
       opt = true,
       cmd = { 'TodoQuickFix', 'TodoTrouble' },
     }
-    use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
-    use { 'junegunn/fzf.vim', requires = 'junegunn/fzf' }
+    use { 'junegunn/vim-peekaboo', keys = '"' } -- TODO: find a nice lua alternative, if possible
+    use {
+      'junegunn/fzf.vim',
+      requires = 'junegunn/fzf'
+    }
     use { 'tpope/vim-fugitive', opt = true,
       cmd = {
         'G',
