@@ -43,7 +43,6 @@ return require('packer').startup(
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
-    use { 'tpope/vim-rhubarb', opt = true, cmd = 'GBrowse' }
     use 'tpope/vim-unimpaired'
     use { 'mattn/emmet-vim', ft = { 'html', 'javascriptreact', 'typescriptreact' } }
     use 'jiangmiao/auto-pairs' -- TODO: find lua alternative
@@ -65,7 +64,10 @@ return require('packer').startup(
       'junegunn/fzf.vim',
       requires = 'junegunn/fzf'
     }
-    use { 'tpope/vim-fugitive', opt = true,
+
+    use {
+      'tpope/vim-fugitive',
+      opt = true,
       cmd = {
         'G',
         'Git',
@@ -73,8 +75,10 @@ return require('packer').startup(
         'Gcommit',
         'Gblame',
         'GBrowse'
-      }
+      },
     }
+
+    use 'tpope/vim-rhubarb'
     use {
       'euclio/vim-markdown-composer',
       opt = true,
@@ -94,6 +98,21 @@ return require('packer').startup(
     use 'lukas-reineke/indent-blankline.nvim'
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
-    use 'norcalli/nvim-colorizer.lua'
+
+    use {
+      'norcalli/nvim-colorizer.lua',
+      opt = true,
+      ft = { 'css', 'scss' },
+      config = function()
+        require('colorizer').setup { -- TODO: export config & load here
+          'javascript';
+          'typescript';
+          'css';
+          javascript = { css = true; };
+          typescript = { css = true; };
+          css = { rgb_fn = true; };
+        }
+     end
+    }
   end
 )

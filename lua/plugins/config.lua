@@ -102,7 +102,7 @@ map('n', 'gd', ':Lspsaga preview_definition<cr>', keyOpts)
 map('n', 'gl', ':Lspsaga show_line_diagnostics<cr>', keyOpts)
 map('n', 'ca', ':Lspsaga code_action<cr>', keyOpts)
 
--- Config: formatter
+-- -- Config: formatter
 local commonJSConfig = {
   function()
     return {
@@ -130,14 +130,14 @@ require('formatter').setup({
 })
 
 -- Config: colorizer
-require('colorizer').setup {
-  'javascript';
-  'typescript';
-  'css';
-  javascript = { css = true; };
-  typescript = { css = true; };
-  css = { rgb_fn = true; };
-}
+-- require('colorizer').setup {
+--   'javascript';
+--   'typescript';
+--   'css';
+--   javascript = { css = true; };
+--   typescript = { css = true; };
+--   css = { rgb_fn = true; };
+-- }
 
 -- Config: indent-blankline
 vim.g.indent_blankline_use_treesitter = true
@@ -281,6 +281,7 @@ vim.g.loaded_netrwPlugin = 1 -- don't load default netrw
 vim.cmd([[ command! -nargs=1 Browse silent exec '!open "<args>"' ]])
 
 -- TODO: might need new scope, custom autocmd group seems out of place here
+--   used to close extra buffers, spawned by git, when using NVR
 vim.api.nvim_exec(
   [[ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete ]],
   false
