@@ -22,7 +22,14 @@ return require('packer').startup(
     -- =========== LSP and Autocomplete ===========
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim' -- requires nvim-lspconfig to be installed
-    use 'hrsh7th/nvim-compe'
+    use {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path'
+      }
+    }
 
     -- =========== Syntax & Lang ===========
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
