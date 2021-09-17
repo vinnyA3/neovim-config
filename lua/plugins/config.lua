@@ -44,7 +44,6 @@ require('cmp').setup {
 -- vim.cmd[[colorscheme tokyonight]]
 
 -- Config nightfox
--- From lua
 local nightfox = require('nightfox')
 nightfox.load()
 nightfox.setup({
@@ -117,16 +116,6 @@ require('formatter').setup({
     typescriptreact = commonJSConfig,
   }
 })
-
--- Config: colorizer
--- require('colorizer').setup {
---   'javascript';
---   'typescript';
---   'css';
---   javascript = { css = true; };
---   typescript = { css = true; };
---   css = { rgb_fn = true; };
--- }
 
 -- Config: indent-blankline
 vim.g.indent_blankline_use_treesitter = true
