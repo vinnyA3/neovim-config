@@ -93,7 +93,12 @@ return require('packer').startup(
       cmd = { 'ComposerStart', 'ComposerOpen' },
       ft = 'markdown'
     } -- warning: vim-markdown-composer needs cargo installed.  Rust ftw :)
-    use 'glepnir/dashboard-nvim'
+
+    use {
+      'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+    }
+
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Formatters ==========
