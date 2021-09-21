@@ -1,11 +1,11 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
-
--- MACOS - lusrocks installs using incorrect luaversion, unless specified
-vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
-
 -- Initial Packer Install (clean env) 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local compile_path = fn.stdpath('config')..'/lua/packer_compiled.lua'
+
+-- MACOS - lusrocks installs using incorrect luaversion, unless specified
+fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -126,5 +126,8 @@ return require('packer').startup(
         }
      end
     }
-  end
+  end,
+  {
+    compile_path = compile_path
+  }
 )
