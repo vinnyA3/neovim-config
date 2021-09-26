@@ -46,7 +46,7 @@ dashboard.section.buttons.val = {
   dashboard.button( "Leader fh", "  Find history" , ":History<CR>"),
   dashboard.button( "Leader ff", "  Find file" , ":Files<CR>"),
   dashboard.button( "Leader fa", "  Find word" , ":Rg<CR>"),
-  dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
+  dashboard.button( "q", "  Quit" , ":q<CR>"),
 }
 
 alpha.setup(dashboard.opts)
