@@ -69,11 +69,37 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Config: cmp
-require('cmp').setup {
+local cmp = require 'cmp'
+
+cmp.setup {
   sources = {
     { name = 'buffer' },
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', priority = 100 },
     { name = 'path' }
+  },
+  mapping = {
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        path = '[Path]',
+      })[entry.source.name]
+
+      return vim_item
+    end
   }
 }
 
