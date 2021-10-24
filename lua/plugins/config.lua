@@ -73,9 +73,9 @@ local cmp = require 'cmp'
 
 cmp.setup {
   sources = {
-    { name = 'buffer' },
-    { name = 'nvim_lsp', priority = 100 },
-    { name = 'path' }
+    { name = 'nvim_lsp' },
+    { name = 'path' },
+    { name = 'buffer' }
   },
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
