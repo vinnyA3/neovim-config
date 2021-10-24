@@ -140,19 +140,6 @@ require('lualine').setup {
   }
 }
 
--- Config: Lspsaga
-require('lspsaga').init_lsp_saga {
-  border_style = "single"
-}
-
-map('n', 'gh', ':Lspsaga lsp_finder<cr>', keyOpts)
-map('n', 'K',  ':Lspsaga hover_doc<cr>', keyOpts)
-map('n', 'gs', ':Lspsaga signature_help<cr>', keyOpts)
-map('n', 'gr', ':Lspsaga rename<cr>', keyOpts)
-map('n', 'gd', ':Lspsaga preview_definition<cr>', keyOpts)
-map('n', 'gl', ':Lspsaga show_line_diagnostics<cr>', keyOpts)
-map('n', 'ca', ':Lspsaga code_action<cr>', keyOpts)
-
 -- -- Config: formatter
 local commonJSConfig = {
   function()
