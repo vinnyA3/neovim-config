@@ -64,6 +64,9 @@ return require('packer').startup(
       requires = "nvim-lua/plenary.nvim",
       opt = true,
       cmd = { 'TodoQuickFix', 'TodoTrouble' },
+      config = function()
+        require('todo-comments').setup{}
+      end
     }
     use { 'junegunn/vim-peekaboo', keys = '"' } -- TODO: find a nice lua alternative, if possible
     use {

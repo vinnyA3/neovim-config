@@ -46,7 +46,7 @@ nvim_lsp.tsserver.setup{
       }
     ),
   };
-  filetypes = { "javascript", "javascript.jsx", "typescript", "typescriptreact" };
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
 nvim_lsp.diagnosticls.setup{
@@ -77,12 +77,11 @@ nvim_lsp.diagnosticls.setup{
       }
     ),
   };
-  filetypes = { "javascript", "javascript.jsx", "typescript", "typescriptreact" };
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
   init_options = {
     filetypes = {
       javascript = "eslint",
       typescript = "eslint",
-      ["javascript.jsx"] = "eslint",
       javascriptreact = "eslint",
       typescriptreact = "eslint",
     },
