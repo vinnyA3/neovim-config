@@ -2,9 +2,8 @@ LSP Configuration
 ====
 
 This setup leverages the automatic launching and initialization capabilities
-of [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
+of [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 
----
 
 ## Dependencies
 
