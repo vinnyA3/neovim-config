@@ -68,7 +68,7 @@ return require('packer').startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       opt = true,
-      cmd = { 'TodoQuickFix', 'TodoTrouble' },
+      cmd = { 'Trouble', 'TodoQuickFix', 'TodoTrouble' },
       config = function()
         require('todo-comments').setup{}
       end
