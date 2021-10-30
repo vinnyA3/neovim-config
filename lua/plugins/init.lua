@@ -17,7 +17,12 @@ return require('packer').startup(
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- =========== Performance ===========
-    use { 'lewis6991/impatient.nvim', rocks = "mpack" }
+    use {
+      'lewis6991/impatient.nvim',
+      commit = '561b86e5602def047010d451c3e7977a65982788',
+      lock = true,
+      rocks = "mpack"
+    }
 
     -- =========== LSP and Autocomplete ===========
     use 'neovim/nvim-lspconfig'
