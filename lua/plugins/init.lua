@@ -19,8 +19,6 @@ return require('packer').startup(
     -- =========== Performance ===========
     use {
       'lewis6991/impatient.nvim',
-      commit = '561b86e5602def047010d451c3e7977a65982788',
-      lock = true,
       rocks = "mpack"
     }
 
@@ -62,21 +60,28 @@ return require('packer').startup(
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
-      cmd = { 'Trouble', 'TroubleToggle' },
+      cmd = { 'TroubleToggle' },
     }
     use {
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       opt = true,
-      cmd = { 'Trouble', 'TodoQuickFix', 'TodoTrouble' },
-      config = function()
-        require('todo-comments').setup{}
-      end
+      events = 'BufWinEnter'
     }
-    use { 'junegunn/vim-peekaboo', keys = '"' } -- TODO: find a nice lua alternative, if possible
+
+    use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
+
+    -- file navigation
     use {
-      'junegunn/fzf.vim',
-      requires = 'junegunn/fzf'
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        'nvim-lua/popup.nvim',
+        'nvim-lua/plenary.nvim',
+        {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          run = 'make',
+        },
+      },
     }
 
     use {
@@ -113,7 +118,7 @@ return require('packer').startup(
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
-    use 'EdenEast/nightfox.nvim'
+    use 'folke/tokyonight.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
@@ -121,16 +126,9 @@ return require('packer').startup(
     use {
       'norcalli/nvim-colorizer.lua',
       opt = true,
-      ft = { 'css', 'scss' },
+      cmd = { 'ColorizerToggle' } ,
       config = function()
-        require('colorizer').setup { -- TODO: export config & load here
-          'javascript';
-          'typescript';
-          'css';
-          javascript = { css = true; };
-          typescript = { css = true; };
-          css = { rgb_fn = true; };
-        }
+        require('colorizer').setup()
      end
     }
   end,
