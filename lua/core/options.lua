@@ -1,45 +1,79 @@
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
+local opt = vim.opt
 local cmd = vim.cmd
+local indent = 2
 
+-- command options
 cmd(
   [[ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete ]],
   false
 )
-
--- command options
 cmd('set shortmess+=c') -- avoid showing extra message when using completion
 cmd('set path+=**') 
 
--- global
-o.hidden = true
-o.termguicolors = true
-o.splitbelow = true
-o.splitright = true
-o.textwidth = 80
-o.hls = false
-o.showmatch = false
-o.showmode = false
-o.joinspaces = false
-o.backup = false
-o.writebackup = false
-o.swapfile = false
-o.completeopt= 'menuone,noinsert,noselect'
-o.showbreak = "↳  "
-o.expandtab = true
-o.indentexpr = 'off'
-o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
-o.lazyredraw = true
+-- misc
+opt.syntax = 'enable'
+opt.hidden = true
+opt.encoding = 'utf-8'
+opt.clipboard = 'unnamedplus'
+opt.backspace = { 'eol', 'start', 'indent' }
+opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
+opt.showbreak = "↳  "
+opt.textwidth = 80
 
--- buffer options
-bo.modeline = false
-bo.fileencoding = 'utf-8'
-bo.syntax = 'on' 
-bo.autoindent = true
+-- indention
+opt.autoindent = true
+opt.smartindent = true
 
--- window options
-wo.number = true
+-- tabs
+opt.tabstop = indent
+opt.softtabstop = indent
+opt.shiftwidth = indent
+opt.expandtab = true
+
+-- search
+opt.wildmenu = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
+opt.hlsearch = false
+
+-- ui
+opt.number = true
+opt.cursorline = false
+opt.signcolumn = 'yes'
+opt.laststatus = 2
+opt.wrap = false
+opt.scrolloff = 18
+opt.sidescrolloff = 3 -- Lines to scroll horizontally
+opt.list = true
+opt.listchars = {
+  tab = '❘-',
+  trail = '·',
+  lead = '·',
+  extends = '»',
+  precedes = '«',
+  nbsp = '×',
+}
+opt.showmode = false
+opt.lazyredraw = true
+opt.mouse = 'a'
+opt.splitright = true -- Open new split to the right
+opt.splitbelow = true -- Open new split below
+
+-- backups
+opt.swapfile = false
+opt.backup = false
+opt.writebackup = false
+
+-- autocomplete
+opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.shortmess = opt.shortmess + { c = true }
+
+-- perfomance
+opt.updatetime = 100
+opt.timeoutlen = 400
+opt.redrawtime = 1500
+opt.ttimeoutlen = 10
+
+-- theme
+opt.termguicolors = true

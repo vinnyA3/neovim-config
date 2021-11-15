@@ -4,9 +4,6 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 local compile_path = fn.stdpath('config')..'/lua/packer_compiled.lua'
 
--- MACOS - lusrocks installs using incorrect luaversion, unless specified
-fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
-
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   execute 'packadd packer.nvim'
@@ -17,10 +14,7 @@ return require('packer').startup(
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- =========== Performance ===========
-    use {
-      'lewis6991/impatient.nvim',
-      rocks = "mpack"
-    }
+    use 'lewis6991/impatient.nvim'
 
     -- =========== LSP and Autocomplete ===========
     use 'neovim/nvim-lspconfig'
@@ -62,11 +56,10 @@ return require('packer').startup(
       requires = "kyazdani42/nvim-web-devicons",
       cmd = { 'TroubleToggle' },
     }
+
     use {
       "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      opt = true,
-      events = 'BufWinEnter'
+      requires = "nvim-lua/plenary.nvim"
     }
 
     use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
@@ -119,7 +112,7 @@ return require('packer').startup(
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
     use 'folke/tokyonight.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
+    -- use 'lukas-reineke/indent-blankline.nvim'
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
 
@@ -133,6 +126,8 @@ return require('packer').startup(
     }
   end,
   {
-    compile_path = compile_path
+    config = {
+      compile_path = compile_path
+    }
   }
 )
