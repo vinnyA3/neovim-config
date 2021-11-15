@@ -173,6 +173,11 @@ require'telescope'.setup({
       mappings = default_mappings,
       hidden = true,
     },
+    oldfiles = {
+      prompt_title = '✨ Search History ✨',
+      mappings = default_mappings,
+      hidden = true,
+    },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,

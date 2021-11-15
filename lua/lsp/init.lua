@@ -1,9 +1,8 @@
 local nvim_lsp = require('lspconfig')
+local map = require('utils').map
 local fn = vim.fn
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local opts = { noremap = true, silent = true }
   local borderStyle = "single"
 
   vim.lsp.handlers["textDocument/hover"] =
@@ -13,23 +12,23 @@ local on_attach = function(client, bufnr)
     vim.lsp.with(vim.lsp.handlers.signature_help, { border = borderStyle })
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e',
-    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "' .. borderStyle .. '" })<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>') -- requires telescope
+  map('n', '<space>e',
+    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "' .. borderStyle .. '" })<CR>')
+  map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+  map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 end
 
 -- note: this requires CMAKE and a compile_commands.json file:

@@ -54,25 +54,25 @@ require('lualine').setup {
 -- =============== GUIDES =======================
 
 -- Config: indent-blankline
-vim.g.indent_blankline_use_treesitter = true
-vim.g.indent_blankline_filetype = {
-  'lua',
-  'javascript',
-  'javascriptreact',
-  'typescript',
-  'typescriptreact',
-  'lua',
-  'json',
-  'yaml',
-  'html',
-  'swift',
-  'c',
-  'python',
-  'dockerfile',
-  'haskell',
-}
+-- vim.g.indent_blankline_use_treesitter = true
+-- vim.g.indent_blankline_filetype = {
+--   'lua',
+--   'javascript',
+--   'javascriptreact',
+--   'typescript',
+--   'typescriptreact',
+--   'lua',
+--   'json',
+--   'yaml',
+--   'html',
+--   'swift',
+--   'c',
+--   'python',
+--   'dockerfile',
+--   'haskell',
+-- }
 
-require('indent_blankline')
+-- require('indent_blankline')
 
 -- =============== COLORSCHEMES ================
 
