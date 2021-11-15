@@ -1,5 +1,4 @@
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local map = require('utils').map
 
 -- Easy Buffer Navigation and manipulation
 map('n', '<leader>d', ':bd<cr>', opts)

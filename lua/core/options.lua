@@ -3,6 +3,15 @@ local wo = vim.wo
 local bo = vim.bo
 local cmd = vim.cmd
 
+cmd(
+  [[ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete ]],
+  false
+)
+
+-- command options
+cmd('set shortmess+=c') -- avoid showing extra message when using completion
+cmd('set path+=**') 
+
 -- global
 o.hidden = true
 o.termguicolors = true
@@ -34,7 +43,3 @@ bo.autoindent = true
 
 -- window options
 wo.number = true
-
--- command options
-cmd('set shortmess+=c') -- avoid showing extra message when using completion
-cmd('set path+=**') 

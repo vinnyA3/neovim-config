@@ -8,6 +8,9 @@ vim.g.mapleader = " "
 
 require('core/options')
 require('core/keybindings')
-require('plugins/init')
-require('plugins/config')
+require('core/disabled') -- disabled vim default plugings
+
+require('plugins/init') -- packer init plugins
+require('plugins/config') -- source file to include local plugin config
+
 require('lsp/init')
