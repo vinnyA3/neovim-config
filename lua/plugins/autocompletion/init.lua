@@ -7,7 +7,7 @@ cmp.setup {
     { name = 'path' },
     {
       name = 'buffer',
-      opts = {
+      options = {
         get_bufnrs = function()
           local bufs = {}
 
