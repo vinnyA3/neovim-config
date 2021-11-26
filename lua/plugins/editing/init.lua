@@ -14,6 +14,7 @@ require('nvim-treesitter.configs').setup {
   textobjects = { enable = true },
 }
 
+require('nvim-autopairs').setup{}
 
 -- Config trouble.nvim 
 map("n", "<leader>xx", ":Trouble<cr>")

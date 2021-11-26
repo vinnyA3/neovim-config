@@ -56,7 +56,7 @@ return require('packer').startup(
     use 'tpope/vim-repeat'
     use 'tpope/vim-unimpaired'
     use 'mattn/emmet-vim'
-    use 'jiangmiao/auto-pairs' -- TODO: find lua alternative
+    use 'windwp/nvim-autopairs'
 
     -- ========== Utilites and Editing Convenience ==========
     use {
@@ -99,6 +99,7 @@ return require('packer').startup(
     }
 
     use 'tpope/vim-rhubarb'
+
     use {
       'euclio/vim-markdown-composer',
       opt = true,
@@ -117,7 +118,6 @@ return require('packer').startup(
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
     use 'folke/tokyonight.nvim'
-    -- use 'lukas-reineke/indent-blankline.nvim'
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
 
