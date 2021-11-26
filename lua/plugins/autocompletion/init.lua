@@ -1,6 +1,34 @@
 -- Config: cmp
 local cmp = require 'cmp'
 
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
 cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
@@ -26,9 +54,15 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
   },
   formatting = {
     format = function(entry, vim_item)
+      vim_item.kind = string.format(
+        '%s %s',
+        kind_icons[vim_item.kind], vim_item.kind
+      )
+      
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
