@@ -18,12 +18,20 @@ return require('packer').startup(
 
     -- =========== LSP and Autocomplete ===========
     use 'neovim/nvim-lspconfig'
+    
     use {
       'hrsh7th/nvim-cmp',
       requires = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path'
+      }
+    }
+
+    use { 
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
       }
     }
 
@@ -105,9 +113,6 @@ return require('packer').startup(
     }
 
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
-
-    -- ========== Formatters ==========
-    use 'mhartington/formatter.nvim'
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }

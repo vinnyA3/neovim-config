@@ -14,32 +14,6 @@ require('nvim-treesitter.configs').setup {
   textobjects = { enable = true },
 }
 
--- Config: formatter
-local commonJSConfig = {
-  function()
-    return {
-      exe = 'prettier',
-      args = {
-        '--config-precedence',
-        'prefer-file',
-        '--stdin-filepath',
-        vim.api.nvim_buf_get_name(0),
-        '--single-quote'
-      },
-      stdin = true
-    }
-  end
-}
-
-require('formatter').setup({
-  logging = false,
-  filetype = {
-    javascript = commonJSConfig,
-    typescript = commonJSConfig,
-    javascriptreact = commonJSConfig,
-    typescriptreact = commonJSConfig,
-  }
-})
 
 -- Config trouble.nvim 
 map("n", "<leader>xx", ":Trouble<cr>")
