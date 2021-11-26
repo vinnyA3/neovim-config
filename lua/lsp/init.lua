@@ -1,6 +1,25 @@
 local nvim_lsp = require('lspconfig')
+local null_ls = require('null-ls')
 local map = require('utils').map
 local fn = vim.fn
+
+local null_ls_builtins = null_ls.builtins
+
+local null_ls_sources = {
+    null_ls_builtins.formatting.prettierd.with({
+      filetypes = {
+        "html",
+        "json",
+        "yaml",
+        "markdown",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      }
+    }),
+    null_ls_builtins.diagnostics.eslint.with({ command = "eslint_d" })
+}
 
 local on_attach = function(client, bufnr)
   local borderStyle = "single"
@@ -10,6 +29,10 @@ local on_attach = function(client, bufnr)
 
   vim.lsp.handlers["textDocument/signatureHelp"] =
     vim.lsp.with(vim.lsp.handlers.signature_help, { border = borderStyle })
+
+  -- disable formatting - (use null-ls for formatting)
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -33,11 +56,10 @@ end
 
 -- note: this requires CMAKE and a compile_commands.json file:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#clangd 
-nvim_lsp.clangd.setup{
-  on_attach = on_attach;
-}
+nvim_lsp.clangd.setup{ on_attach = on_attach }
 
 nvim_lsp.tsserver.setup{
+  on_attach = on_attach, 
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -48,77 +70,10 @@ nvim_lsp.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
-nvim_lsp.diagnosticls.setup{
-  on_attach = on_attach;
-  handlers = {
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- Enable underline, use default values
-        underline = true,
-        -- Enable virtual text, override spacing to 4
-        virtual_text = {
-          spacing = 4,
-          prefix = '~',
-        },
-        -- Use a function to dynamically turn signs off
-        -- and on, using buffer local variables
-        signs = function(bufnr, client_id)
-          local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
-          -- No buffer local variable set, so just enable by default
-          if not ok then
-            return true
-          end
+null_ls.config({ sources = null_ls_sources })
 
-          return result
-        end,
-        -- Disable a feature
-        update_in_insert = false,
-      }
-    ),
-  };
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
-  init_options = {
-    filetypes = {
-      javascript = "eslint",
-      typescript = "eslint",
-      javascriptreact = "eslint",
-      typescriptreact = "eslint",
-    },
-    linters = {
-      eslint = {
-        sourceName = "eslint",
-        command = "./node_modules/.bin/eslint",
-        rootPatterns = {
-          ".eslintrc",
-          ".eslintrc.json",
-          ".eslintrc.cjs",
-          ".eslintrc.js",
-          ".eslintrc.yml",
-          ".eslintrc.yaml",
-          "package.json"
-        },
-        debounce = 100,
-        args = {
-          "--stdin",
-          "--stdin-filename",
-          "%filepath",
-          "--format",
-          "json",
-        },
-        parseJson = {
-          errorsRoot = "[0].messages",
-          line = "line",
-          column = "column",
-          endLine = "endLine",
-          endColumn = "endColumn",
-          message = "${message} [${ruleId}]",
-          security = "severity",
-        };
-        securities = {
-          [2] = "error",
-          [1] = "warning"
-        }
-      }
-    }
-  }
-}
+nvim_lsp['null-ls'].setup({
+  on_attach = function(client)
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  end
+})
