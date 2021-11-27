@@ -43,7 +43,6 @@ opt.cursorline = false
 opt.signcolumn = 'yes'
 opt.laststatus = 2
 opt.wrap = false
-opt.scrolloff = 18
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.list = true
 opt.listchars = {
