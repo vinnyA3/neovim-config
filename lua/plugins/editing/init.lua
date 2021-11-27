@@ -1,5 +1,8 @@
 local map = require('utils').map
 
+-- Config: registers.nvim
+vim.g.registers_window_border = "single"
+
 -- Config: nvim-treesitter
 require('nvim-treesitter.configs').setup {
  -- TODO: check upstream if this works

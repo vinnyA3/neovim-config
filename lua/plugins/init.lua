@@ -28,7 +28,7 @@ return require('packer').startup(
       }
     }
 
-    use { 
+    use {
       'jose-elias-alvarez/null-ls.nvim',
       requires = {
         'nvim-lua/plenary.nvim'
@@ -70,7 +70,7 @@ return require('packer').startup(
       requires = "nvim-lua/plenary.nvim"
     }
 
-    use 'junegunn/vim-peekaboo' -- TODO: find a nice lua alternative, if possible
+    use 'tversteeg/registers.nvim'
 
     -- file navigation
     use {
