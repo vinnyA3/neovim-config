@@ -11,7 +11,6 @@ local null_ls_sources = {
         "html",
         "json",
         "yaml",
-        "markdown",
         "javascript",
         "javascriptreact",
         "typescript",
