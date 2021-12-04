@@ -51,7 +51,13 @@ return require('packer').startup(
       requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
     }
 
-    use 'tpope/vim-commentary'
+    use {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+    }
+
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'tpope/vim-unimpaired'
