@@ -44,7 +44,7 @@ alpha.setup(dashboard.opts)
 -- =============== STATUSLINE ==================
 require('lualine').setup {
   options = {
-    theme = 'tokyonight';
+    theme = 'catppuccin';
     icons_enabled = true;
     section_separators = {'', ''};
     component_separators = {'|', '|'};
@@ -79,11 +79,14 @@ require('lualine').setup {
 -- Config: moonfly
 -- vim.g.moonflyTransparent = 1
 
+-- Config: catppuccin 
+vim.cmd[[ colorscheme catppuccin ]]
+
 -- Config tokyonight
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_transparent = false
-vim.g.tokyonight_italic_functions = false
-vim.cmd[[ colorscheme tokyonight ]]
+-- vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_transparent = false
+-- vim.g.tokyonight_italic_functions = false
+-- vim.cmd[[ colorscheme tokyonight ]]
 
 -- Config nightfox
 -- local nightfox = require('nightfox')

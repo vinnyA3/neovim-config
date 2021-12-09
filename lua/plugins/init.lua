@@ -123,7 +123,10 @@ return require('packer').startup(
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
-    use 'folke/tokyonight.nvim'
+
+    use({ "catppuccin/nvim", as = "catppuccin" })
+
+    use { 'folke/tokyonight.nvim', opt = true }
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
 
