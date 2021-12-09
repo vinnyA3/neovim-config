@@ -67,8 +67,7 @@ return require('packer').startup(
     -- ========== Utilites and Editing Convenience ==========
     use {
       "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      cmd = { 'TroubleToggle' },
+      requires = "kyazdani42/nvim-web-devicons"
     }
 
     use {
@@ -123,7 +122,10 @@ return require('packer').startup(
 
     -- ========== Cosmetics ===========
     use { 'bluz71/vim-moonfly-colors', opt = true }
-    use 'folke/tokyonight.nvim'
+
+    use({ "catppuccin/nvim", as = "catppuccin" })
+
+    use { 'folke/tokyonight.nvim', opt = true }
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hoob3rt/lualine.nvim'
 

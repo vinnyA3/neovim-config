@@ -10,6 +10,12 @@ cmd(
 cmd('set shortmess+=c') -- avoid showing extra message when using completion
 cmd('set path+=**') 
 
+-- italic escapes
+cmd([[
+  let &t_ZH="\e[3m"
+  let &t_ZR="\e[23m"
+]])
+
 -- misc
 opt.syntax = 'enable'
 opt.hidden = true
