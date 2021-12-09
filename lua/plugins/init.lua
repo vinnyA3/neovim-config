@@ -67,8 +67,7 @@ return require('packer').startup(
     -- ========== Utilites and Editing Convenience ==========
     use {
       "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      cmd = { 'TroubleToggle' },
+      requires = "kyazdani42/nvim-web-devicons"
     }
 
     use {
