@@ -3,10 +3,8 @@ local null_ls = require('null-ls')
 local map = require('utils').map
 local fn = vim.fn
 
-local null_ls_builtins = null_ls.builtins
-
 local null_ls_sources = {
-    null_ls_builtins.formatting.prettierd.with({
+    null_ls.builtins.formatting.prettierd.with({
       filetypes = {
         "html",
         "json",
@@ -17,7 +15,7 @@ local null_ls_sources = {
         "typescriptreact"
       }
     }),
-    null_ls_builtins.diagnostics.eslint.with({ command = "eslint_d" })
+    null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
 }
 
 local on_attach = function(client, bufnr)
@@ -69,10 +67,10 @@ nvim_lsp.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
-null_ls.config({ sources = null_ls_sources })
-
-nvim_lsp['null-ls'].setup({
+null_ls.setup({
+  sources = null_ls_sources,
   on_attach = function(client)
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
 })
+
