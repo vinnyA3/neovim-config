@@ -18,6 +18,23 @@ local null_ls_sources = {
     null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
 }
 
+-- local function do_diagnostic_signs()
+--   local signs = {
+--     Warn = '' .. ' ',
+--     Warn = '' .. ' ',
+--     Hint = '' .. ' ',
+--     Info = '' .. ' ',
+--   }
+--
+--   local t = vim.fn.sign_getdefined('DiagnosticSignWarn')
+--   if vim.tbl_isempty(t) then
+--     for type, icon in pairs(signs) do
+--       local hl = 'DiagnosticSign' .. type
+--       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+--     end
+--   end
+-- end
+
 local on_attach = function(client, bufnr)
   local borderStyle = "single"
 
@@ -74,3 +91,4 @@ null_ls.setup({
   end
 })
 
+-- do_diagnostic_signs()
