@@ -25,7 +25,8 @@ return require('packer').startup(
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path'
-      }
+      },
+      event = 'InsertEnter'
     }
 
     use {
@@ -55,7 +56,8 @@ return require('packer').startup(
       'numToStr/Comment.nvim',
       config = function()
         require('Comment').setup()
-      end
+      end,
+      event = 'BufWinEnter'
     }
 
     use 'tpope/vim-surround'
@@ -126,7 +128,21 @@ return require('packer').startup(
     use({ "catppuccin/nvim", as = "catppuccin" })
 
     use { 'folke/tokyonight.nvim', opt = true }
-    use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+    use {
+      'lewis6991/gitsigns.nvim',
+       requires = 'nvim-lua/plenary.nvim',
+       opt = true,
+       config = function()
+         require('gitsigns').setup {
+           signs = {
+             add = { text = '++', numhl='GitSignsAddNr' },
+           }
+         }
+       end,
+       event = 'BufRead'
+    }
+
     use 'hoob3rt/lualine.nvim'
 
     use {

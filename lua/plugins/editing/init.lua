@@ -27,13 +27,6 @@ map("n", "<leader>xl", ":Trouble loclist<cr>")
 map("n", "<leader>xq", ":Trouble quickfix<cr>")
 map("n", "gR", ":Trouble lsp_references<cr>")
 
--- Config: gitsigns 
-require('gitsigns').setup {
-  signs = {
-    add = { text = '++', numhl='GitSignsAddNr' },
-  }
-}
-
 -- Config: vim-markdown-composer 
 vim.g.markdown_composer_autostart = 0
 
