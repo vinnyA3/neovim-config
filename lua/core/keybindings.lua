@@ -17,7 +17,7 @@ map('t', '<C-k>', '<C-w>k', opts)
 map('t', '<C-l>', '<C-w>l', opts)
 
 -- Relative number toggle
-map('n', '<leader>e', ':exec &rnu? "se rnu!" : "se rnu"<cr>', opts)
+map('n', '<leader>E', ':exec &rnu? "se rnu!" : "se rnu"<cr>', opts)
 
 -- <Tab> & <S-Tab> to navigate the completion menu
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { expr = true })
