@@ -84,6 +84,12 @@ nvim_lsp.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
+nvim_lsp.svelte.setup{
+  on_attach = on_attach,
+  cmd = { "svelteserver", "--stdio" },
+  filetypes = { "svelte" }
+}
+
 null_ls.setup({
   sources = null_ls_sources,
   on_attach = function(client)
