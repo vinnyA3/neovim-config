@@ -63,6 +63,17 @@ require'lir.git_status'.setup({ show_ignored = false })
 -- Config: Telescope
 local telescope_actions = require('telescope.actions')
 
+-- helper :: fallback to 'find_files' if 'git_files' cannot find a .git directory
+-- TODO: when doing future refactoring, modularize things and load custom
+-- 'plugin' keybindings, so that we don't need to add this function to the
+-- global scope
+function gitFilesFallback()
+  local opts = {} -- no opts for now
+  local ok = pcall(require'telescope.builtin'.git_files, opts)
+
+  if not ok then require'telescope.builtin'.find_files(opts) end
+end
+
 local default_mappings = {
   n = { -- n: signifies normal mode
     ['Q'] = telescope_actions.smart_add_to_qflist + telescope_actions.open_qflist,
@@ -187,7 +198,7 @@ require'telescope'.setup({
 
 require('telescope').load_extension('fzf')
 
-map('n', '<C-p>', '<cmd>lua require("telescope.builtin").git_files()<cr>')
+map('n', '<C-p>', '<cmd>lua gitFilesFallback()<cr>')
 map('n', '<leader>ff', ':Telescope find_files<cr>')
 map('n', '<leader>fh', ':Telescope oldfiles<cr>')
 map('n', '<leader>fa', ':Telescope live_grep<cr>')
