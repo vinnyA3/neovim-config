@@ -22,8 +22,6 @@ Coming soon -- documentation
 nvim
   ├── README.md
   ├── init.lua // entry point
-  ├── legacy
-  │   └── init.vim // legacy files -- soon to be removed
   ├── lua
   │   ├── core // core options & default resets (no plugin dependencies)
   │   │   ├── disabled.lua
