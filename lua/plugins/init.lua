@@ -132,13 +132,6 @@ return require('packer').startup(
       'lewis6991/gitsigns.nvim',
        requires = 'nvim-lua/plenary.nvim',
        opt = true,
-       config = function()
-         require('gitsigns').setup {
-           signs = {
-             add = { text = '++', numhl='GitSignsAddNr' },
-           }
-         }
-       end,
        event = 'BufRead'
     }
 
