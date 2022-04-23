@@ -7,6 +7,7 @@ local plugin_modules = {
   'plugins.navigation',
   'plugins.editing',
   'plugins.autocompletion',
+  'plugins.commands',
 }
 
 for _, mod in pairs(plugin_modules) do
