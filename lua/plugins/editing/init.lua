@@ -39,7 +39,7 @@ vim.cmd([[ command! -nargs=1 Browse silent exec '!open "<args>"' ]])
 -- Config: gitsigns.nvim
 require('gitsigns').setup {
   signs = {
-    add = { text = '++', numhl='GitSignsAddNr' },
+    add = { text = '++', numhl = 'GitSignsAddNr' },
   },
   on_attach = function(bufnr)
      local function map(mode, lhs, rhs, opts)
