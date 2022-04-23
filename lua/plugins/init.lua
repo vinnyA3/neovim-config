@@ -16,9 +16,11 @@ return require('packer').startup(
     -- =========== Performance ===========
     use 'lewis6991/impatient.nvim'
 
-    -- =========== LSP and Autocomplete ===========
+    -- =========== LSP, Autocomplete and Snippets ===========
     use 'neovim/nvim-lspconfig'
-    
+
+    use 'L3MON4D3/LuaSnip'
+
     use {
       'hrsh7th/nvim-cmp',
       requires = {
@@ -27,6 +29,8 @@ return require('packer').startup(
         'hrsh7th/cmp-path'
       }
     }
+
+    use 'saadparwaiz1/cmp_luasnip'
 
     use {
       'jose-elias-alvarez/null-ls.nvim',
