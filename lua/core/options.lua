@@ -23,18 +23,26 @@ opt.encoding = 'utf-8'
 opt.clipboard = 'unnamedplus'
 opt.backspace = { 'eol', 'start', 'indent' }
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
-opt.showbreak = "↳  "
+opt.showbreak = string.rep("↳  ", 3) -- so long lines smartly wrap
+opt.linebreak = true
 opt.textwidth = 80
 
--- indention
+-- indentation & tabs
 opt.autoindent = true
 opt.smartindent = true
-
--- tabs
+opt.breakindent = true
+opt.cindent = true
 opt.tabstop = indent
 opt.softtabstop = indent
 opt.shiftwidth = indent
 opt.expandtab = true
+
+opt.wrap = true
+
+-- folds
+opt.foldmethod = "marker"
+opt.foldlevel = 0
+opt.modelines = 1
 
 -- search
 opt.wildmenu = true
@@ -42,13 +50,16 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.hlsearch = false
+-- cool floating window popup menu, for completion on command line
+opt.pumblend = 17
+opt.wildmode = 'longest:full'
+opt.wildoptions = 'pum'
 
 -- ui
 opt.number = true
 opt.cursorline = false
 opt.signcolumn = 'yes'
 opt.laststatus = 2
-opt.wrap = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.list = true
 opt.listchars = {
