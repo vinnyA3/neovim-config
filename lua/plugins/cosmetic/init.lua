@@ -79,7 +79,13 @@ require('lualine').setup {
 -- Config: moonfly
 -- vim.g.moonflyTransparent = 1
 
--- Config: catppuccin 
+-- Config: catppuccin
+local catppuccin = require('catppuccin')
+
+catppuccin.setup({
+  transparent_background = true
+})
+
 vim.cmd[[ colorscheme catppuccin ]]
 
 -- Config tokyonight
