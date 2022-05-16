@@ -41,3 +41,6 @@ map('n', '<leader>T', ':sp | term<CR>', opts)
 
 -- find and replace all occurences of focused word, in current buffer
 map('n', '<Leader>s', ':%s/\\<<C-r><C-w>\\>/', opts)
+
+-- copy current file name(+path) to primary clip register
+map('n', ',cf', ':let @*=expand("%:p")<CR>', opts)
