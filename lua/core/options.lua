@@ -8,7 +8,7 @@ cmd(
   false
 )
 cmd('set shortmess+=c') -- avoid showing extra message when using completion
-cmd('set path+=**') 
+cmd('set path+=**')
 
 -- italic escapes
 cmd([[
@@ -23,7 +23,7 @@ opt.encoding = 'utf-8'
 opt.clipboard = 'unnamedplus'
 opt.backspace = { 'eol', 'start', 'indent' }
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
-opt.showbreak = string.rep("↳  ", 3) -- so long lines smartly wrap
+opt.showbreak = string.rep("↳ ", 2) -- so long lines smartly wrap
 opt.linebreak = true
 opt.textwidth = 80
 
