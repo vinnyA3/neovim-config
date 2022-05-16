@@ -145,8 +145,8 @@ require'telescope'.setup({
     buffers = {
       prompt_title = '✨ Search Buffers ✨',
       mappings = vim.tbl_deep_extend('force', {
-        n = { -- n: signifies normal mode
-          ['d'] = telescope_actions.delete_buffer,
+        n = { -- n: signifies normal mode (control-d delete)
+          ['<C-d>'] = telescope_actions.delete_buffer,
         },
       }, default_mappings),
       sort_mru = true,
