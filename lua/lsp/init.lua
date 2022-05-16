@@ -15,6 +15,7 @@ local null_ls_sources = {
         "typescriptreact"
       }
     }),
+    null_ls.builtins.formatting.gofmt,
     null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
 }
 
@@ -73,7 +74,7 @@ end
 nvim_lsp.clangd.setup{ on_attach = on_attach }
 
 nvim_lsp.tsserver.setup{
-  on_attach = on_attach, 
+  on_attach = on_attach,
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -88,6 +89,10 @@ nvim_lsp.svelte.setup{
   on_attach = on_attach,
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" }
+}
+
+nvim_lsp.gopls.setup{
+  on_attach = on_attach,
 }
 
 null_ls.setup({
