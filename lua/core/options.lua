@@ -27,6 +27,11 @@ opt.showbreak = string.rep("↳ ", 2) -- so long lines smartly wrap
 opt.linebreak = true
 opt.textwidth = 80
 
+-- define how cmdline-completion works
+-- opt.pumblend = 5
+-- opt.wildmode = 'longest:full'
+-- opt.wildoptions = 'pum'
+
 -- indentation & tabs
 opt.autoindent = true
 opt.smartindent = true
@@ -36,13 +41,7 @@ opt.tabstop = indent
 opt.softtabstop = indent
 opt.shiftwidth = indent
 opt.expandtab = true
-
-opt.wrap = true
-
--- folds
-opt.foldmethod = "marker"
-opt.foldlevel = 0
-opt.modelines = 1
+opt.wrap = true -- wrap lines
 
 -- search
 opt.wildmenu = true
@@ -50,10 +49,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.hlsearch = false
--- cool floating window popup menu, for completion on command line
-opt.pumblend = 17
-opt.wildmode = 'longest:full'
-opt.wildoptions = 'pum'
 
 -- ui
 opt.number = true
