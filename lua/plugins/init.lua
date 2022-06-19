@@ -76,7 +76,7 @@ return require('packer').startup(
     }
 
     use {
-      "folke/todo-comments.nvim",
+      "vinnyA3/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim"
     }
 
