@@ -1,5 +1,6 @@
 plugin/*
 plugin/packer_compiled.vim
 sessions/*
+views/*
 debug/*
 testing/*

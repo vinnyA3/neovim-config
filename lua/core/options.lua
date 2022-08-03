@@ -1,3 +1,4 @@
+local fn = vim.fn
 local opt = vim.opt
 local cmd = vim.cmd
 local indent = 2
@@ -75,6 +76,7 @@ opt.splitbelow = true -- Open new split below
 opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
+opt.viewdir = fn.stdpath('config')..'/views'
 
 -- autocomplete
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
