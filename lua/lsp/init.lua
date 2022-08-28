@@ -73,6 +73,9 @@ end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#clangd 
 nvim_lsp.clangd.setup{ on_attach = on_attach }
 
+-- Require rust-analyzer binary installation
+nvim_lsp.rust_analyzer.setup{}
+
 nvim_lsp.tsserver.setup{
   on_attach = on_attach,
   handlers = {

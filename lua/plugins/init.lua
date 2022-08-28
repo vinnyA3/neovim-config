@@ -123,6 +123,8 @@ return require('packer').startup(
       requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
+    use 'glepnir/dashboard-nvim'
+
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Cosmetics ===========
