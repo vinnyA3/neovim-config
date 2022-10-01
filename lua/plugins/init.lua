@@ -41,7 +41,6 @@ return require('packer').startup(
 
     -- =========== Syntax & Lang ===========
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'keith/swift.vim', opt = true, ft = 'swift' }
 
     -- ========== Editing ===========
     -- use {keys = string | list}
