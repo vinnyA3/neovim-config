@@ -96,6 +96,13 @@ return require('packer').startup(
     }
 
     use {
+      'ThePrimeagen/harpoon',
+      requires = {
+        'nvim-lua/plenary.nvim',
+      },
+    }
+
+    use {
       'tpope/vim-fugitive',
       opt = true,
       cmd = {

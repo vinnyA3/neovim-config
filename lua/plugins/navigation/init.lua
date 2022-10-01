@@ -112,7 +112,9 @@ local opts_vertical = {
   },
 }
 
-require'telescope'.setup({
+local telescope = require('telescope')
+
+telescope.setup({
   defaults = {
     prompt_prefix = '🔍 ',
     selection_caret = '> ',
@@ -196,7 +198,8 @@ require'telescope'.setup({
   },
 })
 
-require('telescope').load_extension('fzf')
+telescope.load_extension('fzf')
+telescope.load_extension('harpoon') -- load harpoon
 
 map('n', '<C-p>', '<cmd>lua gitFilesFallback()<cr>')
 map('n', '<leader>ff', ':Telescope find_files<cr>')
@@ -206,3 +209,7 @@ map('n', '<leader>b', ':Telescope buffers<cr>')
 map('n', '<leader>gcc', ':Telescope git_commits<cr>')
 map('n', '<leader>gst', ':Telescope git_status<cr>')
 map('n', '<C-b>', ':Telescope git_branches<cr>')
+
+-- Config: harpoon
+map("n", "<leader>ha", ":lua require'harpoon.mark'.add_file()<CR>")
+map("n", "<leader>ha", ":Telescope harpoon marks<CR>") -- telescope ext
