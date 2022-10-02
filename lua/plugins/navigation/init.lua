@@ -212,4 +212,4 @@ map('n', '<C-b>', ':Telescope git_branches<cr>')
 
 -- Config: harpoon
 map("n", "<leader>ha", ":lua require'harpoon.mark'.add_file()<CR>")
-map("n", "<leader>ha", ":Telescope harpoon marks<CR>") -- telescope ext
+map("n", "<leader>hh", ":Telescope harpoon marks<CR>") -- telescope ext
