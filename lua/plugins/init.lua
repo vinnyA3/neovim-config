@@ -69,6 +69,8 @@ return require('packer').startup(
     use 'windwp/nvim-autopairs'
 
     -- ========== Utilites and Editing Convenience ==========
+    use "lukas-reineke/indent-blankline.nvim"
+    
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons"

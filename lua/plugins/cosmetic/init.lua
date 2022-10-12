@@ -53,25 +53,28 @@ require('lualine').setup {
 -- =============== GUIDES =======================
 
 -- Config: indent-blankline
--- vim.g.indent_blankline_use_treesitter = true
--- vim.g.indent_blankline_filetype = {
---   'lua',
---   'javascript',
---   'javascriptreact',
---   'typescript',
---   'typescriptreact',
---   'lua',
---   'json',
---   'yaml',
---   'html',
---   'swift',
---   'c',
---   'python',
---   'dockerfile',
---   'haskell',
--- }
+vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_filetype = {
+  'lua',
+  'javascript',
+  'javascriptreact',
+  'typescript',
+  'typescriptreact',
+  'html',
+  'nix',
+  'rust',
+  'svelte',
+  'css',
+  'scss',
+  'c',
+  'python',
+}
 
--- require('indent_blankline')
+require('indent_blankline').setup {
+  space_char_blankline = " ",
+  show_current_context = true,
+  show_current_context_start = true,
+}
 
 -- =============== COLORSCHEMES ================
 
@@ -81,37 +84,25 @@ require('lualine').setup {
 -- Config: catppuccin
 local catppuccin = require('catppuccin')
 
+vim.g.catppuccin_flavour = 'mocha'
+
 catppuccin.setup({
-  transparent_background = false,
+  transparent_background = true,
   integrations = {
-    telescope = true
+    telescope = true,
+    gitsigns = true,
+    cmp = true,
+    treesitter = true,
   },
 })
 
-vim.g.catppuccin_flavour = 'mocha'
-vim.cmd[[ colorscheme catppuccin ]]
+vim.api.nvim_command "colorscheme catppuccin"
 
 -- Config tokyonight
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_transparent = false
 -- vim.g.tokyonight_italic_functions = false
 -- vim.cmd[[ colorscheme tokyonight ]]
-
--- Config nightfox
--- local nightfox = require('nightfox')
--- nightfox.load()
--- nightfox.setup({
---   fox = "nightfox", -- Which fox style should be applied
---   transparent = false, -- Disable setting the background color
---   terminal_colors = true, -- Configure the colors used when opening :terminal
---   styles = {
---     comments = "NONE", -- Style that is applied to comments: see `highlight-args` for options
---     functions = "NONE", -- Style that is applied to functions: see `highlight-args` for options
---     keywords = "NONE", -- Style that is applied to keywords: see `highlight-args` for options
---     strings = "NONE", -- Style that is applied to strings: see `highlight-args` for options
---     variables = "NONE", -- Style that is applied to variables: see `highlight-args` for options
---   },
--- })
 
 -- =============== TROUBLE ================
 require('todo-comments').setup({
