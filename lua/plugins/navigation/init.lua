@@ -62,16 +62,31 @@ require'lir.git_status'.setup({ show_ignored = false })
 
 -- Config: Telescope
 local telescope_actions = require('telescope.actions')
+local telescope_themes = require('telescope.themes')
+local telescope_builtin = require('telescope.builtin')
 
 -- helper :: fallback to 'find_files' if 'git_files' cannot find a .git directory
 -- TODO: when doing future refactoring, modularize things and load custom
 -- 'plugin' keybindings, so that we don't need to add this function to the
 -- global scope
 function gitFilesFallback()
-  local opts = {} -- no opts for now
-  local ok = pcall(require'telescope.builtin'.git_files, opts)
+  -- local opts = {} -- no opts for now
+  -- local ok = pcall(telescope_builtin.git_files, opts)
+  --
+  -- if not ok then
+  --   telescope_builtin.find_files(telescope_themes.get_ivy())
+  -- end
+  
+  -- NOTE: this is a worked for broken check above (in comment) .. this might be
+  -- a future config object, or actually fixed upstream .. just check on last
+  -- release: see https://github.com/nvim-telescope/telescope.nvim/issues/2183
+  local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
 
-  if not ok then require'telescope.builtin'.find_files(opts) end
+  if in_git_repo then
+    telescope_builtin.git_files()
+  else
+    telescope_builtin.find_files()
+  end
 end
 
 local default_mappings = {
@@ -153,6 +168,7 @@ telescope.setup({
       }, default_mappings),
       sort_mru = true,
       preview_title = false,
+      theme = "ivy",
     },
     lsp_code_actions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Code Actions',
@@ -180,26 +196,31 @@ telescope.setup({
       prompt_title = '✨ Search Project ✨',
       mappings = default_mappings,
       hidden = true,
+      theme = "ivy",
     },
     git_files = {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,
       hidden = true,
+      theme = "ivy",
     },
     oldfiles = {
       prompt_title = '✨ Search History ✨',
       mappings = default_mappings,
       hidden = true,
+      theme = "ivy",
     },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,
+      hidden = true,
+      theme = "ivy",
     },
   },
 })
 
 telescope.load_extension('fzf')
-telescope.load_extension('harpoon') -- load harpoon
+telescope.load_extension('harpoon')
 
 map('n', '<C-p>', '<cmd>lua gitFilesFallback()<cr>')
 map('n', '<leader>ff', ':Telescope find_files<cr>')
