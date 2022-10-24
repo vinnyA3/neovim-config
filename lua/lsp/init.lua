@@ -37,7 +37,7 @@ local null_ls_sources = {
 -- end
 
 local on_attach = function(client, bufnr)
-  local borderStyle = "single"
+  local borderStyle = "rounded"
 
   vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(vim.lsp.handlers.hover, { border = borderStyle })
