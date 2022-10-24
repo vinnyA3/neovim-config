@@ -41,11 +41,31 @@ local has_words_before = function()
   )[1]:sub(col, col):match("%s") == nil
 end
 
+local select_next_item = cmp.mapping(function(fallback)
+  if cmp.visible() then cmp.select_next_item()
+  elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
+  elseif has_words_before() then cmp.complete()
+  else fallback()
+  end
+end, { "i", "s"})
+
+local select_prev_item = function()
+  if cmp.visible() then cmp.select_prev_item()
+  elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
+  elseif has_words_before() then cmp.complete()
+  else fallback()
+  end
+end
+
 cmp.setup {
   snippet = {
     expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   sources = {
     { name = 'luasnip' },
@@ -72,20 +92,10 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
-      elseif has_words_before() then cmp.complete()
-      else fallback()
-      end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then luasnip.jump(-1)
-      else fallback()
-      end
-    end, { "i", "s" })
-    -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    ['<C-j>'] = select_next_item,
+    ['<C-k>'] = select_prev_item,
+    ["<Tab>"] = select_next_item,
+    ["<S-Tab>"] = select_prev_item,
   },
   formatting = {
     format = function(entry, vim_item)
