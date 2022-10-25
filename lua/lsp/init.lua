@@ -45,9 +45,16 @@ local on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/signatureHelp"] =
     vim.lsp.with(vim.lsp.handlers.signature_help, { border = borderStyle })
 
+  vim.diagnostic.config({
+    float = {
+      source = 'always',
+      border = borderStyle
+    }
+  })
+
   -- disable formatting - (use null-ls for formatting)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.document_formatting = false
+  client.server_capabilities.document_range_formatting = false
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -61,10 +68,9 @@ local on_attach = function(client, bufnr)
   map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
   map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>') -- requires telescope
-  map('n', '<space>e',
-    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "' .. borderStyle .. '" })<CR>')
-  map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+  map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+  map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
   map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
   map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 end
@@ -106,8 +112,6 @@ nvim_lsp.gopls.setup{
 null_ls.setup({
   sources = null_ls_sources,
   on_attach = function(client)
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
   end
 })
-
--- do_diagnostic_signs()
