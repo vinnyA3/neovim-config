@@ -15,8 +15,8 @@ local null_ls_sources = {
         "typescriptreact"
       }
     }),
-    null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
+    -- null_ls.builtins.formatting.gofmt,
+    -- null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
 }
 
 -- local function do_diagnostic_signs()
@@ -99,15 +99,17 @@ nvim_lsp.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
+nvim_lsp.eslint.setup{}
+
 nvim_lsp.svelte.setup{
   on_attach = on_attach,
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" }
 }
 
-nvim_lsp.gopls.setup{
-  on_attach = on_attach,
-}
+-- nvim_lsp.gopls.setup{
+--   on_attach = on_attach,
+-- }
 
 null_ls.setup({
   sources = null_ls_sources,
