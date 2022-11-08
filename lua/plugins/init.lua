@@ -134,11 +134,11 @@ return require('packer').startup(
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
     -- ========== Cosmetics ===========
-    use { 'bluz71/vim-moonfly-colors', opt = true }
 
-    use({ "catppuccin/nvim", as = "catppuccin" })
+    -- use { 'bluz71/vim-moonfly-colors', opt = true }
+    -- use({ "catppuccin/nvim", as = "catppuccin" })
 
-    use { 'folke/tokyonight.nvim', opt = true }
+    use 'folke/tokyonight.nvim'
 
     use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
 

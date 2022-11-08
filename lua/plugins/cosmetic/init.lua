@@ -43,7 +43,7 @@ alpha.setup(dashboard.opts)
 -- =============== STATUSLINE ==================
 require('lualine').setup {
   options = {
-    theme = 'catppuccin';
+    theme = 'tokyonight';
     icons_enabled = true;
     section_separators = {'', ''};
     component_separators = {'|', '|'};
@@ -82,27 +82,53 @@ require('indent_blankline').setup {
 -- vim.g.moonflyTransparent = 1
 
 -- Config: catppuccin
-local catppuccin = require('catppuccin')
+-- local catppuccin = require('catppuccin')
 
-vim.g.catppuccin_flavour = 'mocha'
+-- catppuccin.setup({
+--   flavour = 'mocha',
+--   transparent_background = false,
+--   -- integrations = {
+--   --   telescope = true,
+--   --   gitsigns = true,
+--   --   cmp = true,
+--   --   treesitter = true,
+--   -- },
+--   highlight = {
+--     enable = true,
+--     additional_vim_regex_highlightling = false,
+--   },
+--   term_colors = true,
+--   dim_inactive = {
+--     enabled = true,
+--     shade = 'dark',
+--     percentage = 0.15,
+--   },
+--   native_lsp = {
+--     enabled = true,
+--     virtual_text = {
+--         errors = { "italic" },
+--         hints = { "italic" },
+--         warnings = { "italic" },
+--         information = { "italic" },
+--     },
+--     underlines = {
+--         errors = { "underline" },
+--         hints = { "underline" },
+--         warnings = { "underline" },
+--         information = { "underline" },
+--     },
+--   },
+-- })
 
-catppuccin.setup({
-  transparent_background = true,
-  integrations = {
-    telescope = true,
-    gitsigns = true,
-    cmp = true,
-    treesitter = true,
-  },
-})
-
-vim.api.nvim_command "colorscheme catppuccin"
+-- vim.api.nvim_command "colorscheme catppuccin"
 
 -- Config tokyonight
--- vim.g.tokyonight_style = "night"
--- vim.g.tokyonight_transparent = false
--- vim.g.tokyonight_italic_functions = false
--- vim.cmd[[ colorscheme tokyonight ]]
+require("tokyonight").setup({
+  style = "night",
+  transparent = true,
+})
+
+vim.cmd[[ colorscheme tokyonight ]]
 
 -- =============== TROUBLE ================
 require('todo-comments').setup({
