@@ -168,7 +168,6 @@ telescope.setup({
       }, default_mappings),
       sort_mru = true,
       preview_title = false,
-      theme = "ivy",
     },
     lsp_code_actions = vim.tbl_deep_extend('force', opts_cursor, {
       prompt_title = 'Code Actions',
@@ -196,25 +195,21 @@ telescope.setup({
       prompt_title = '✨ Search Project ✨',
       mappings = default_mappings,
       hidden = true,
-      theme = "ivy",
     },
     git_files = {
       prompt_title = '✨ Search Git Project ✨',
       mappings = default_mappings,
       hidden = true,
-      theme = "ivy",
     },
     oldfiles = {
       prompt_title = '✨ Search History ✨',
       mappings = default_mappings,
       hidden = true,
-      theme = "ivy",
     },
     live_grep = {
       prompt_title = '✨ Live Grep ✨',
       mappings = default_mappings,
       hidden = true,
-      theme = "ivy",
     },
   },
 })
