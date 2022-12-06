@@ -6,6 +6,7 @@ local fn = vim.fn
 local null_ls_sources = {
     null_ls.builtins.formatting.prettierd.with({
       filetypes = {
+        "astro",
         "html",
         "json",
         "yaml",
@@ -98,6 +99,8 @@ nvim_lsp.tsserver.setup{
   };
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
+
+nvim_lsp.astro.setup{}
 
 nvim_lsp.eslint.setup{}
 
