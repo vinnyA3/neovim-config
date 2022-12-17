@@ -9,41 +9,38 @@ with Rust, Lua .. etc!
 
 * [Installation and Setup](installation-and-setup)
 * [Configuration Directory Structure](configuration-directory-structure)
-* [Plugins](Plugins)
-* [LSP](LSP)
 
 ## Installation and Setup
 
-Coming soon -- documentation
+**Initial Steps**:
+  * `git clone https://github.com/vinnyA3/neovim-config.git && cd neovim-config`
+  * uncomment packer autoinstall method in `lua/vim/packer.lua`
+  * open nvim - packer should autoinstall on launch
+  * run `:PackerSync` -- note: you might need to close+reopen vim first before running
+  * you're done!
+
+**LSP Setup**: Refer to `after/lsp.lua` for the server configs.  Each config
+requires a language server installed before usage
+
+**Treesitter**: Parsers are installed manually for now -- you just need to
+`:TSInstall` for the desired parser.
 
 ## Configuration Directory Structure
 
 ```javascript
 nvim
   ├── README.md
-  ├── init.lua // entry point
-  ├── lua/
-  │   ├── core/ // core options & default resets (no plugin dependencies)
-  │   │   ├── disabled.lua
-  │   │   ├── keybindings.lua
-  │   │   └── options.lua
-  │   ├── lsp/ // lsp centric config
-  │   │   ├── README.md
-  │   │   └── init.lua
-  │   ├── plugins/ // various plugin config
-  │   │   ├── autocompletion/
-  │   │   │   └── init.lua
-  │   │   ├── config.lua // subdirectory sourcing
-  │   │   ├── cosmetic/
-  │   │   │   └── init.lua
-  │   │   ├── editing/
-  │   │   │   └── init.lua
-  │   │   ├── init.lua // plugin initialization (packer entry)
-  │   │   ├── navigation/
-  │   │   │   └── init.lua
-  │   │   └── themes/
-  │   │       └── init.lua
-  │   └── utils.lua // misc, custom util module
+  ├── init.lua // entry point - source namespaced lua/vin
+  ├── after
+  │   └── plugins // houses all after-load plugin configurations
+  ├── lua
+  │   ├── vin/ // namespaced entry dir
+  │   │   ├── init.lua // main entry
+  │   │   ├── packer.lua // packer plugin sourcing
+  │   │   ├── set.lua // default vim option settings
+  │   │   ├── commands.lua // custom user au commands
+  │   │   ├── utils.lua // helpers and utitlies for config usage
+  │   │   └── remap.lua // main keybindings & remaps
   └── snippets // custom & community snippets
       ├── javascript
       │   ├── javascript.node.snippets
@@ -52,12 +49,3 @@ nvim
       ├── typescriptreact.snippets
       └── typescript.snippets
 ```
-
-## Plugins
-
-Plugins are organized by use and context.  Please refer to each subdirectory
-located in `/lug/plugins`.
-
-## LSP
-
-Coming soon -- documentation
