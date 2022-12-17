@@ -50,6 +50,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.hlsearch = false
+opt.incsearch = true
 
 -- ui
 opt.number = true
@@ -83,7 +84,7 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.shortmess = opt.shortmess + { c = true }
 
 -- perfomance
-opt.updatetime = 100
+opt.updatetime = 50
 opt.timeoutlen = 400
 opt.redrawtime = 1500
 opt.ttimeoutlen = 10
