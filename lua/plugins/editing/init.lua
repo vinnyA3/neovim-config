@@ -23,7 +23,7 @@ require('nvim-treesitter.configs').setup {
 
 require('nvim-autopairs').setup{}
 
--- Config trouble.nvim 
+-- Config trouble.nvim
 map("n", "<leader>xx", ":Trouble<cr>")
 map("n", "<leader>xw", ":Trouble lsp_workspace_diagnostics<cr>")
 map("n", "<leader>xd", ":Trouble lsp_document_diagnostics<cr>")
@@ -31,7 +31,7 @@ map("n", "<leader>xl", ":Trouble loclist<cr>")
 map("n", "<leader>xq", ":Trouble quickfix<cr>")
 map("n", "gR", ":Trouble lsp_references<cr>")
 
--- Config: vim-markdown-composer 
+-- Config: vim-markdown-composer
 vim.g.markdown_composer_autostart = 0
 
 -- Config: Fugitive

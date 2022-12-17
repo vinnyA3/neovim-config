@@ -1,6 +1,6 @@
 local map = require('utils').map
 
--- Config: lir 
+-- Config: lir
 local actions = require'lir.actions'
 local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require'lir.clipboard.actions'
