@@ -16,8 +16,11 @@ local null_ls_sources = {
         "typescriptreact"
       }
     }),
-    -- null_ls.builtins.formatting.gofmt,
-    -- null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d" })
+    null_ls.builtins.formatting.rustfmt.with({
+      filetypes = {
+        "rust",
+      }
+    }),
 }
 
 -- local function do_diagnostic_signs()
@@ -100,7 +103,9 @@ nvim_lsp.tsserver.setup{
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
 }
 
-nvim_lsp.astro.setup{}
+nvim_lsp.astro.setup{
+  on_attach = on_attach,
+}
 
 nvim_lsp.eslint.setup{}
 
