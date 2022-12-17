@@ -1,11 +1,13 @@
+-- Config: Tokyonight
+require("tokyonight").setup({
+  style = "night",
+  transparent = true,
+})
+
+vim.cmd[[ colorscheme tokyonight ]]
+
 -- Config: moonfly
 -- vim.g.moonflyTransparent = 1
-
--- Config tokyonight
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_transparent = false
-vim.g.tokyonight_italic_functions = false
-vim.cmd[[ colorscheme tokyonight ]]
 
 -- Config nightfox
 -- local nightfox = require('nightfox')

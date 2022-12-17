@@ -1,6 +1,7 @@
 local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
-local map = require('utils').map
+local map = require('vin.utils').map
+
 local fn = vim.fn
 
 local null_ls_sources = {

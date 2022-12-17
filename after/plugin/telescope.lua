@@ -1,69 +1,12 @@
-local map = require('utils').map
-
--- Config: lir
-local actions = require'lir.actions'
-local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
-
-require'lir'.setup {
-  show_hidden_files = true,
-  devicons_enable = true,
-  mappings = {
-    ['l']     = actions.edit,
-    ['<CR>']  = actions.edit,
-    ['<C-s>'] = actions.split,
-    ['<C-v>'] = actions.vsplit,
-    ['<C-t>'] = actions.tabedit,
-
-    ['h']     = actions.up,
-    ['q']     = actions.quit,
-
-    ['K']     = actions.mkdir,
-    ['N']     = actions.newfile,
-    ['R']     = actions.rename,
-    ['@']     = actions.cd,
-    ['Y']     = actions.yank_path,
-    ['.']     = actions.toggle_show_hidden,
-    ['D']     = actions.delete,
-
-    ['J'] = function()
-      mark_actions.toggle_mark()
-      vim.cmd('normal! j')
-    end,
-    ['C'] = clipboard_actions.copy,
-    ['X'] = clipboard_actions.cut,
-    ['P'] = clipboard_actions.paste,
-  },
-  float = {
-    winblend = 0,
-    win_opts = function()
-      local width = math.floor(vim.o.columns * 0.8)
-      local height = math.floor(vim.o.lines * 0.8)
-
-      return {
-        border = require("lir.float.helper").make_border_opts({
-          "+", "─", "+", "│", "+", "─", "+", "│",
-        }, "Normal"),
-        width = width,
-        height = height,
-        row = 1,
-        col = math.floor((vim.o.columns - width) / 2),
-      }
-    end
-  },
-  hide_cursor = false,
-}
-
-map('n', '<Leader>F', ":lua require'lir.float'.toggle()<CR>")
-map('n', '-', [[<CMD>execute 'e ' .. expand('%:p:h')<CR>]]) -- netrw/dirvish file exp functionality
-
--- Config: lir-git-status
-require'lir.git_status'.setup({ show_ignored = false })
-
--- Config: Telescope
+local telescope = require('telescope')
 local telescope_actions = require('telescope.actions')
 local telescope_themes = require('telescope.themes')
 local telescope_builtin = require('telescope.builtin')
+
+local map = require('vin.utils').map
+
+telescope.load_extension('fzf')
+telescope.load_extension('harpoon')
 
 -- helper :: fallback to 'find_files' if 'git_files' cannot find a .git directory
 -- TODO: when doing future refactoring, modularize things and load custom
@@ -126,8 +69,6 @@ local opts_vertical = {
     mirror = true,
   },
 }
-
-local telescope = require('telescope')
 
 telescope.setup({
   defaults = {
@@ -214,9 +155,7 @@ telescope.setup({
   },
 })
 
-telescope.load_extension('fzf')
-telescope.load_extension('harpoon')
-
+-- === Mappings ===
 map('n', '<C-p>', '<cmd>lua gitFilesFallback()<cr>')
 map('n', '<leader>ff', ':Telescope find_files<cr>')
 map('n', '<leader>fh', ':Telescope oldfiles<cr>')
@@ -226,6 +165,6 @@ map('n', '<leader>gcc', ':Telescope git_commits<cr>')
 map('n', '<leader>gst', ':Telescope git_status<cr>')
 map('n', '<C-b>', ':Telescope git_branches<cr>')
 
--- Config: harpoon
+-- Harpoon -- separate plugin, however, uses Telescope for render
 map("n", "<leader>ha", ":lua require'harpoon.mark'.add_file()<CR>")
 map("n", "<leader>hh", ":Telescope harpoon marks<CR>") -- telescope ext

@@ -3,6 +3,9 @@ local opt = vim.opt
 local cmd = vim.cmd
 local indent = 2
 
+-- === LEADER ===
+vim.g.mapleader = " "
+
 -- command options
 cmd(
   [[ autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete ]],

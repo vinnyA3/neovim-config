@@ -1,16 +1,30 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
--- Initial Packer Install (clean env)
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
 local compile_path = fn.stdpath('config')..'/lua/packer_compiled.lua'
 
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  execute 'packadd packer.nvim'
+-- Auto Install Packer - if not currently present/detected
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+
+    return true
+  end
+
+  return false
 end
 
+-- [Comment in to auto install & bootstrap]
+-- local packer_bootstrap = ensure_packer()
+
+vim.cmd.packadd('packer.nvim')
+
 return require('packer').startup(
-  function()
+  function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     -- =========== Performance ===========
@@ -124,7 +138,7 @@ return require('packer').startup(
       run = 'cargo build --release',
       cmd = { 'ComposerStart', 'ComposerOpen' },
       ft = 'markdown'
-    } -- warning: vim-markdown-composer needs cargo installed.  Rust ftw :)
+    } -- warning: vim-markdown-composer needs cargo installed.  Rust ftw!
 
     use {
       'goolord/alpha-nvim',
@@ -136,7 +150,6 @@ return require('packer').startup(
     -- ========== Cosmetics ===========
 
     -- use { 'bluz71/vim-moonfly-colors', opt = true }
-    -- use({ "catppuccin/nvim", as = "catppuccin" })
 
     use 'folke/tokyonight.nvim'
 
