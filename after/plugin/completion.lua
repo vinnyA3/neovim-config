@@ -1,7 +1,7 @@
--- Config: cmp
-local cmp = require'cmp'
-local luasnip = require'luasnip'
+local cmp = require'cmp' -- nvim-cmp
+local luasnip = require'luasnip' -- luasnip
 
+-- Didn't really feel like installing another plug for icons
 local kind_icons = {
   Text = "",
   Method = "",

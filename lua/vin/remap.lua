@@ -1,4 +1,8 @@
-local map = require('utils').map
+local map = require('vin.utils').map
+
+-- === LEADER ===
+map('n', '<Space>', '', {})
+map('v', '<Space>', '', {})
 
 -- Easy Buffer manipulations
 map('n', '<leader>d', ':bd<cr>', opts)
