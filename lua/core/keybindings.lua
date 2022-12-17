@@ -1,6 +1,6 @@
 local map = require('utils').map
 
--- Easy Buffer Navigation and manipulation
+-- Easy Buffer manipulations
 map('n', '<leader>d', ':bd<cr>', opts)
 map('n', '<leader>o', ':%bd|e#<cr>', opts) -- close all buffers(%), open last for editing(e#) : mnemonic 'o' -> only
 
@@ -33,10 +33,10 @@ map('n', '<Left>', ':vertical resize -5<CR>', opts)
 map('n', '<Right>', ':vertical resize +5<CR>', opts)
 
 -- 'fullscreen' buffer (open current buffer in new tab)
--- nmap (leader + t)  for fulltab
+-- nmap (leader + z)  for fulltab
 map('n', '<leader>z', ':tab split<CR>', opts)
 
--- split terminal (horiz)
+-- split terminal (horizontal)
 map('n', '<leader>T', ':sp | term<CR>', opts)
 
 -- find and replace all occurences of focused word, in current buffer
