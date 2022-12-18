@@ -33,6 +33,13 @@ return require('packer').startup(
     -- =========== LSP, Autocomplete and Snippets ===========
     use 'neovim/nvim-lspconfig'
 
+    use {
+      'williamboman/mason.nvim',
+      config = function()
+        require('mason').setup()
+      end
+    }
+
     use 'L3MON4D3/LuaSnip'
 
     use {
