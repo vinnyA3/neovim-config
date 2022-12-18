@@ -20,7 +20,14 @@ with Rust, Lua .. etc!
   * you're done!
 
 **LSP Setup**: Refer to `after/lsp.lua` for the server configs.  Each config
-requires a language server installed before usage
+requires a language server installed before usage.  This configuration leverages
+[https://github.com/williamboman/mason.nvim](Mason.nvim) to install & manage MOST language servers -- Mason can be invoked
+with `:Mason`.
+
+> **note**: the eslint lang server is managed outside of mason - the extracted
+> vscode langservers are not available in the mason registry (as of 12/17/22).
+> The necessary language servers can be installed w/ `npm i -g vscode-langservers-extracted` or with `yarn`
+> ... OR .. better yet, with volta: `volta install vscode-langservers-extracted`
 
 **Treesitter**: Parsers are installed manually for now -- you just need to
 `:TSInstall` for the desired parser.
