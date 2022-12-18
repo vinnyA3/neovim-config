@@ -6,7 +6,6 @@ local telescope_builtin = require('telescope.builtin')
 local map = require('vin.utils').map
 
 telescope.load_extension('fzf')
-telescope.load_extension('harpoon')
 
 -- helper :: fallback to 'find_files' if 'git_files' cannot find a .git directory
 -- TODO: when doing future refactoring, modularize things and load custom
@@ -164,7 +163,3 @@ map('n', '<leader>b', ':Telescope buffers<cr>')
 map('n', '<leader>gcc', ':Telescope git_commits<cr>')
 map('n', '<leader>gst', ':Telescope git_status<cr>')
 map('n', '<C-b>', ':Telescope git_branches<cr>')
-
--- Harpoon -- separate plugin, however, uses Telescope for render
-map("n", "<leader>ha", ":lua require'harpoon.mark'.add_file()<CR>")
-map("n", "<leader>hh", ":Telescope harpoon marks<CR>") -- telescope ext
