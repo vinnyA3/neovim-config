@@ -65,7 +65,6 @@ opt.list = true
 opt.listchars = {
   tab = '❘-',
   trail = '·',
-  lead = '·',
   extends = '»',
   precedes = '«',
   nbsp = '×',
