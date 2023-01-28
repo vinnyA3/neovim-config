@@ -14,9 +14,11 @@ with Rust, Lua .. etc!
 
 **Initial Steps**:
   * `git clone https://github.com/vinnyA3/neovim-config.git && cd neovim-config`
-  * uncomment packer autoinstall method in `lua/vim/packer.lua`
-  * open nvim - packer should autoinstall on launch
-  * run `:PackerSync` -- note: you might need to close+reopen vim first before running
+  * open nvim - Lazy-Nvim should autoinstall on launch
+    - subsequently, registered plugins should install
+  * run `:Lazy` -- note: not necessary, but will be good to sanity check
+  installed plugins 
+    - additionally, you can run `:checkhealth lazy` to check lazy-nvim integrity
   * you're done!
 
 **LSP Setup**: Refer to `after/lsp.lua` for the server configs.  Each config
@@ -41,9 +43,10 @@ nvim
   ├── after
   │   └── plugins // houses all after-load plugin configurations
   ├── lua
+  │   ├── plugins
+  │   │   └── init.lua // main plugin config - lazynvim loads plug configs from here
   │   ├── vin/ // namespaced entry dir
-  │   │   ├── init.lua // main entry
-  │   │   ├── packer.lua // packer plugin sourcing
+  │   │   ├── init.lua // main entry & lazynvim initialization
   │   │   ├── set.lua // default vim option settings
   │   │   ├── commands.lua // custom user au commands
   │   │   ├── utils.lua // helpers and utitlies for config usage
