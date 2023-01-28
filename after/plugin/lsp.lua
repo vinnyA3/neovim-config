@@ -110,6 +110,10 @@ nvim_lsp.astro.setup{
 
 nvim_lsp.eslint.setup{}
 
+nvim_lsp.sumneko_lua.setup{
+  on_attach = on_attach,
+}
+
 nvim_lsp.svelte.setup{
   on_attach = on_attach,
   cmd = { "svelteserver", "--stdio" },
