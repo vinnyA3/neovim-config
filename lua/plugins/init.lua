@@ -6,7 +6,11 @@ return {
     {
       'williamboman/mason.nvim',
       config = function()
-        require('mason').setup()
+        require('mason').setup({
+          ui = {
+            border = 'rounded'
+          }
+        })
       end
     },
     'L3MON4D3/LuaSnip',
@@ -103,7 +107,8 @@ return {
     },
     { 'glacambre/firenvim', build = function() vim.fn['firenvim#install'](0) end },
     -- ========== Cosmetics ===========
-    'folke/tokyonight.nvim',
+    -- 'folke/tokyonight.nvim',
+    { "catppuccin/nvim", name = "catppuccin" },
     { 'lewis6991/gitsigns.nvim', dependencies = 'nvim-lua/plenary.nvim' },
     'hoob3rt/lualine.nvim',
     {
