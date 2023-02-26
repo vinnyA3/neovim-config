@@ -103,7 +103,7 @@ cmp.setup {
         '%s %s',
         kind_icons[vim_item.kind], vim_item.kind
       )
-      
+
       vim_item.menu = ({
         luasnip = '[Snippet]',
         buffer = '[Buffer]',
