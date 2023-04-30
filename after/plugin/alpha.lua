@@ -13,7 +13,17 @@ dashboard.section.header.val = {
 }
 
 if is_linux then
-  dashboard.section.footer.val = {
+  local holo_quotes = {
+    { "Ah, am die. Thenk you foreva.", "Inugami Korone" },
+    { "Ahh the pepeloni - you know the pepeloni?", "Haachama" },
+    { "All over the glass ...", "Gawr Gura" },
+    { "A", "Gawr Gura" },
+    { "Fuck you chat", "Mori Calliope" },
+    { "It was the PING!!", "Amelia Watson" },
+    { "Poi ~", "Shishiro Botan" },
+  }
+
+  local dynamic_footer = {
     [[]],
     [[]],
     [[ ⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂ ]],
@@ -31,8 +41,14 @@ if is_linux then
     [[ ⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈ ]],
     [[ ⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈ ]],
     [[]],
-    [[ "A" -- Gawr Gura ]],
   }
+
+  local quote_and_member = holo_quotes[math.random(1, #holo_quotes)]
+
+  table.insert(
+    dynamic_footer, string.format([[ "%s" - %s ]], quote_and_member[1], quote_and_member[2]))
+
+  dashboard.section.footer.val = dynamic_footer
 else
   dashboard.section.footer.val = {
     [[]],
