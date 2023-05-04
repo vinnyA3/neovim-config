@@ -1,7 +1,7 @@
 local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
 
-local is_linux = vim.loop.os_uname().sysname
+local sysname = vim.loop.os_uname().sysname
 
 dashboard.section.buttons.val = {
   dashboard.button("e", "  New file" , ":ene <BAR> startinsert <cr>"),
@@ -177,7 +177,7 @@ local function personal_config()
   dashboard.section.footer.val = dynamic_footer
 end
 
-if is_linux then
+if sysname == 'Linux' then
   personal_config()
 else
   work_config()
