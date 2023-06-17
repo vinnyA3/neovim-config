@@ -101,10 +101,9 @@ return {
       build = 'cargo build --release',
       cmd = { 'ComposerStart', 'ComposerOpen' },
       ft = 'markdown'
-    }, -- warning: vim-markdown-composer needs cargo installed.  Rust ftw!
+    }, -- warning: vim-markdown-composer needs cargo installed!
+    { 'glacambre/firenvim', build = function() vim.fn['firenvim#install'](0) end },
     {
-      'goolord/alpha-nvim',
-      dependencies = { 'kyazdani42/nvim-web-devicons' },
       "mickael-menu/zk-nvim",
       config = function()
         require("zk").setup({
@@ -135,7 +134,6 @@ return {
         })
       end
     },
-    { 'glacambre/firenvim', build = function() vim.fn['firenvim#install'](0) end },
     -- ========== Cosmetics ===========
     -- 'folke/tokyonight.nvim',
     { "catppuccin/nvim", name = "catppuccin" },
@@ -148,6 +146,9 @@ return {
       config = function()
         require('colorizer').setup()
      end
+    },
+    {
+      'goolord/alpha-nvim',
+      dependencies = { 'kyazdani42/nvim-web-devicons' },
     }
-
 }
