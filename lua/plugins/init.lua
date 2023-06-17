@@ -31,6 +31,7 @@ return {
     },
     -- =========== Syntax & Lang ===========
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+
     -- ========== Editing ===========
     {
       'tamago324/lir.nvim',
@@ -104,6 +105,35 @@ return {
     {
       'goolord/alpha-nvim',
       dependencies = { 'kyazdani42/nvim-web-devicons' },
+      "mickael-menu/zk-nvim",
+      config = function()
+        require("zk").setup({
+          picker = "telescope",
+          lsp = {
+            config = {
+              cmd = { "zk", "lsp" },
+              name = "zk",
+              on_attach = function(client, bufnr)
+                local borderStyle = "rounded"
+
+                vim.lsp.handlers["textDocument/hover"] =
+                  vim.lsp.with(vim.lsp.handlers.hover, { border = borderStyle })
+
+                vim.diagnostic.config({
+                  float = {
+                    source = 'always',
+                    border = borderStyle
+                  }
+                })
+              end
+            }
+          },
+          auto_attach = {
+            enabled = true,
+            filetypes = { "markdown" },
+          }
+        })
+      end
     },
     { 'glacambre/firenvim', build = function() vim.fn['firenvim#install'](0) end },
     -- ========== Cosmetics ===========

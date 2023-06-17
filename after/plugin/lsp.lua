@@ -92,6 +92,8 @@ nvim_lsp.rust_analyzer.setup {
   filetypes = { "rust" }
 }
 
+nvim_lsp.zls.setup{}
+
 nvim_lsp.tsserver.setup{
   on_attach = on_attach,
   handlers = {
