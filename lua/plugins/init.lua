@@ -134,6 +134,7 @@ return {
         })
       end
     },
+    { "github/copilot.vim" },
     -- ========== Cosmetics ===========
     -- 'folke/tokyonight.nvim',
     { "catppuccin/nvim", name = "catppuccin" },
