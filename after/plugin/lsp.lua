@@ -22,6 +22,11 @@ local null_ls_sources = {
         "rust",
       }
     }),
+    null_ls.builtins.formatting.golines.with({
+      filetypes = {
+        "go"
+      }
+    })
 }
 
 -- local function do_diagnostic_signs()
@@ -77,7 +82,7 @@ local on_attach = function(client, bufnr)
   map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
   map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
   map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  map('n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>')
 end
 
 -- note: this requires CMAKE and a compile_commands.json file:
@@ -114,7 +119,20 @@ nvim_lsp.eslint.setup{}
 
 nvim_lsp.pylsp.setup{}
 
+nvim_lsp.gopls.setup{
+  on_attach = on_attach,
+  settings = {
+    gopls = {
+      gofumpt = true
+    }
+  }
+}
+
 nvim_lsp.lua_ls.setup{
+  on_attach = on_attach,
+}
+
+nvim_lsp.cssls.setup{
   on_attach = on_attach,
 }
 
