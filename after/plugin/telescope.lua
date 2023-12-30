@@ -132,25 +132,30 @@ telescope.setup({
       mappings = default_mappings,
     }),
     find_files = {
-      prompt_title = '✨ Search Project ✨',
+      prompt_title = '🔎 Search Project',
       mappings = default_mappings,
       hidden = true,
     },
     git_files = {
-      prompt_title = '✨ Search Git Project ✨',
+      prompt_title = '📚 Search Git Project',
       mappings = default_mappings,
       hidden = true,
     },
     oldfiles = {
-      prompt_title = '✨ Search History ✨',
+      prompt_title = '📒 Search History',
       mappings = default_mappings,
       hidden = true,
     },
     live_grep = {
-      prompt_title = '✨ Live Grep ✨',
+      prompt_title = '🔍 Live Grep',
       mappings = default_mappings,
       hidden = true,
     },
+    commands = {
+      prompt_title = '📢 Commands',
+      theme = "dropdown",
+      hidden = false,
+    }
   },
 })
 
@@ -163,3 +168,4 @@ map('n', '<leader>b', ':Telescope buffers<cr>')
 map('n', '<leader>gcc', ':Telescope git_commits<cr>')
 map('n', '<leader>gst', ':Telescope git_status<cr>')
 map('n', '<C-b>', ':Telescope git_branches<cr>')
+map('n', '<Leader><tab>', ':Telescope commands<CR>')
