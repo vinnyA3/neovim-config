@@ -64,6 +64,13 @@ local null_ls_sources = {
       filetypes = {
         "go"
       }
+    }),
+    null_ls.builtins.formatting.clang_format.with({
+      filetypes = {
+        "c",
+        "cpp",
+        "cs"
+      }
     })
 }
 
@@ -132,5 +139,13 @@ nvim_lsp.svelte.setup{
   on_attach = on_attach,
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" }
+}
+
+nvim_lsp.zk.setup{
+  on_attach = on_attach,
+}
+
+nvim_lsp.marksman.setup{
+  on_attach = on_attach,
 }
 -- ========= NVIM LSP CONFIGS ==========
