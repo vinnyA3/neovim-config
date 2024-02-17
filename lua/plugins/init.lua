@@ -134,7 +134,7 @@ return {
         })
       end
     },
-    { "github/copilot.vim" },
+    { "github/copilot.vim", commit = '315c6d2b16e018cb8020f20aaa7081ebc4070828' },
     -- ========== Cosmetics ===========
     -- 'folke/tokyonight.nvim',
     { "catppuccin/nvim", name = "catppuccin" },
