@@ -13,7 +13,6 @@ return {
         })
       end
     },
-    'L3MON4D3/LuaSnip',
     {
       'hrsh7th/nvim-cmp',
       dependencies = {
@@ -22,7 +21,6 @@ return {
         'hrsh7th/cmp-path'
       }
     },
-    'saadparwaiz1/cmp_luasnip',
    {
       'nvimtools/none-ls.nvim',
       dependencies = {

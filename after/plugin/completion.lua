@@ -1,5 +1,4 @@
 local cmp = require'cmp' -- nvim-cmp
-local luasnip = require'luasnip' -- luasnip
 
 -- Didn't really feel like installing another plug for icons
 local kind_icons = {
@@ -43,7 +42,6 @@ end
 
 local select_next_item = cmp.mapping(function(fallback)
   if cmp.visible() then cmp.select_next_item()
-  elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
   elseif has_words_before() then cmp.complete()
   else fallback()
   end
@@ -51,24 +49,17 @@ end, { "i", "s"})
 
 local select_prev_item = function()
   if cmp.visible() then cmp.select_prev_item()
-  elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
   elseif has_words_before() then cmp.complete()
   else fallback()
   end
 end
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end
-  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'path' },
     {
@@ -105,7 +96,6 @@ cmp.setup {
       )
 
       vim_item.menu = ({
-        luasnip = '[Snippet]',
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
         path = '[Path]',

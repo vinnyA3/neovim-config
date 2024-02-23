@@ -51,11 +51,4 @@ nvim
   │   │   ├── commands.lua // custom user au commands
   │   │   ├── utils.lua // helpers and utitlies for config usage
   │   │   └── remap.lua // main keybindings & remaps
-  └── snippets // custom & community snippets
-      ├── javascript
-      │   ├── javascript.node.snippets
-      │   ├── javascript-react.snippets
-      │   └── javascript.snippets
-      ├── typescriptreact.snippets
-      └── typescript.snippets
 ```
