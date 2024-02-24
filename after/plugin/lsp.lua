@@ -1,15 +1,16 @@
 local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
 local map = require('vin.utils').map
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client)
   local borderStyle = "rounded"
 
   vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = borderStyle })
+      vim.lsp.with(vim.lsp.handlers.hover, { border = borderStyle })
 
   vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = borderStyle })
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = borderStyle })
 
   vim.diagnostic.config({
     float = {
@@ -18,7 +19,7 @@ local on_attach = function(client)
     }
   })
 
-  -- disable formatting - (use none-ls for formatting)
+  -- control lsp formatting - (use none-ls for formatting)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
 
@@ -43,35 +44,23 @@ end
 
 -- =========== NULL/NONE-LS ============
 local null_ls_sources = {
-    null_ls.builtins.formatting.prettierd.with({
-      filetypes = {
-        "astro",
-        "html",
-        "json",
-        "yaml",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-      }
-    }),
-    null_ls.builtins.formatting.rustfmt.with({
-      filetypes = {
-        "rust",
-      }
-    }),
-    null_ls.builtins.formatting.golines.with({
-      filetypes = {
-        "go"
-      }
-    }),
-    null_ls.builtins.formatting.clang_format.with({
-      filetypes = {
-        "c",
-        "cpp",
-        "cs"
-      }
-    })
+  null_ls.builtins.formatting.prettierd.with({
+    filetypes = {
+      "astro",
+      "html",
+      "json",
+      "yaml",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    }
+  }),
+  null_ls.builtins.formatting.golines.with({
+    filetypes = {
+      "go"
+    }
+  }),
 }
 
 null_ls.setup({
@@ -86,7 +75,7 @@ null_ls.setup({
 
 -- note: this requires CMAKE and a compile_commands.json file:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#clangd
-nvim_lsp.clangd.setup{ on_attach = on_attach }
+nvim_lsp.clangd.setup { on_attach = on_attach }
 
 -- note: rust-analyzer must be installed on your machine first
 -- https://github.com/rust-lang/rust-analyzer
@@ -96,9 +85,9 @@ nvim_lsp.rust_analyzer.setup {
   filetypes = { "rust" }
 }
 
-nvim_lsp.zls.setup{}
+nvim_lsp.zls.setup {}
 
-nvim_lsp.tsserver.setup{
+nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -106,19 +95,19 @@ nvim_lsp.tsserver.setup{
         virtual_text = true
       }
     ),
-  };
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" };
+  },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 }
 
-nvim_lsp.astro.setup{
+nvim_lsp.astro.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.eslint.setup{}
+nvim_lsp.eslint.setup {}
 
-nvim_lsp.pylsp.setup{}
+nvim_lsp.pylsp.setup {}
 
-nvim_lsp.gopls.setup{
+nvim_lsp.gopls.setup {
   on_attach = on_attach,
   settings = {
     gopls = {
@@ -127,25 +116,25 @@ nvim_lsp.gopls.setup{
   }
 }
 
-nvim_lsp.lua_ls.setup{
+nvim_lsp.lua_ls.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.cssls.setup{
+nvim_lsp.cssls.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.svelte.setup{
+nvim_lsp.svelte.setup {
   on_attach = on_attach,
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" }
 }
 
-nvim_lsp.zk.setup{
+nvim_lsp.zk.setup {
   on_attach = on_attach,
 }
 
-nvim_lsp.marksman.setup{
+nvim_lsp.marksman.setup {
   on_attach = on_attach,
 }
 -- ========= NVIM LSP CONFIGS ==========
