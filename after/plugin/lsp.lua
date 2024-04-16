@@ -61,6 +61,11 @@ local null_ls_sources = {
       "go"
     }
   }),
+  null_ls.builtins.formatting.black.with({
+    filetypes = {
+      "python"
+    }
+  }),
 }
 
 null_ls.setup({
