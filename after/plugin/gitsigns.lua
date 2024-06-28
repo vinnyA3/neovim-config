@@ -2,7 +2,7 @@ local map = require('vin.utils').map
 
 require('gitsigns').setup {
   signs = {
-    add = { text = '++', numhl = 'GitSignsAddNr' },
+    add = { text = '++' },
   },
   on_attach = function(bufnr)
      local function map(mode, lhs, rhs, opts)
