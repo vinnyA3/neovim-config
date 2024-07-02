@@ -31,14 +31,21 @@ return {
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
     -- ========== Editing ===========
-    {
-      'tamago324/lir.nvim',
-      dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
-    },
-    {
-      'tamago324/lir-git-status.nvim',
-      dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
-    },
+    -- {
+    --   'tamago324/lir.nvim',
+    --   dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
+    -- },
+    -- {
+    --   'tamago324/lir-git-status.nvim',
+    --   dependencies = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' }
+    -- },
+     { 'stevearc/oil.nvim', dependencies = { "nvim-tree/nvim-web-devicons" } },
+     {
+       "refractalize/oil-git-status.nvim",
+       dependencies = {
+         "stevearc/oil.nvim",
+       },
+     },
      {
       'numToStr/Comment.nvim',
       config = function()
