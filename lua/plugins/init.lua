@@ -28,7 +28,7 @@ return {
       }
     },
     -- =========== Syntax & Lang ===========
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', commit = '74dc34a7fa8e1ea4bcc4578f7a4b14e3ec8c189f' },
 
     -- ========== Editing ===========
     -- {
