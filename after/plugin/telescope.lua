@@ -18,13 +18,19 @@ function gitFilesFallback()
   -- if not ok then
   --   telescope_builtin.find_files(telescope_themes.get_ivy())
   -- end
-  
   -- NOTE: this is a worked for broken check above (in comment) .. this might be
   -- a future config object, or actually fixed upstream .. just check on last
   -- release: see https://github.com/nvim-telescope/telescope.nvim/issues/2183
-  local in_git_repo = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
+  local is_git = vim.fn.systemlist"git rev-parse --is-inside-work-tree"[1] == 'true'
+  -- local is_git = os.execute('git') == 0
+  --
+  -- if in_git_repo then
+  --   telescope_builtin.git_files()
+  -- else
+  --   telescope_builtin.find_files()
+  -- end
 
-  if in_git_repo then
+  if is_git then
     telescope_builtin.git_files()
   else
     telescope_builtin.find_files()
