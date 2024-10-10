@@ -92,7 +92,7 @@ nvim_lsp.rust_analyzer.setup {
 
 nvim_lsp.zls.setup {}
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
   on_attach = on_attach,
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
